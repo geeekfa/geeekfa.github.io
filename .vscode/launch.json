@@ -2,12 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Portfolio: dev + browser",
-      "type": "chrome",
+      "type": "node",
       "request": "launch",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}",
-      "preLaunchTask": "nuxt: dev"
+      "name": "Nuxt: pnpm dev",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
