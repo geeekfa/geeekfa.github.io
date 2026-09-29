@@ -37,10 +37,6 @@ import { projects } from '~/data/projects'
 
     <section id="projects" class="pf-container q-py-xl">
       <div class="text-h5 text-weight-bold q-mb-lg">Projects</div>
-
-      <!-- TEMP: asset-hosting smoke test, remove once confirmed -->
-      <q-img src="/images/test.svg" width="400px" class="q-mb-lg rounded-borders" />
-
       <div class="column q-gutter-y-lg">
         <ProjectCard v-for="p in projects" :key="p.slug" :project="p" />
       </div>
