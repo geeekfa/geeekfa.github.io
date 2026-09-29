@@ -1,0 +1,186 @@
+// Design tokens. Every colour, radius and shadow on the site comes from here.
+body.body--light {
+  --pf-bg: #f7f9fc;
+  --pf-surface: #ffffff;
+  --pf-text: #0b1b33;
+  --pf-muted: #4a5a70;
+  --pf-line: rgba(11, 27, 51, 0.08);
+  --pf-glass-bg: rgba(255, 255, 255, 0.55);
+  --pf-glass-border: rgba(255, 255, 255, 0.75);
+  --pf-shadow: 0 10px 30px rgba(11, 27, 51, 0.07);
+  --pf-surface-2: #eef2f7;
+  --pf-header-shadow: 0 1px 0 rgba(11, 27, 51, 0.06), 0 8px 24px -16px rgba(11, 27, 51, 0.25);
+  --pf-chip-sat: 65%;
+  --pf-chip-bg: 94%;
+  --pf-chip-border: 84%;
+  --pf-chip-text-sat: 40%;
+  --pf-chip-text: 32%;
+  --pf-hero-bg: #2a4470;
+  --pf-hero-bg-image: linear-gradient(135deg, #22395f 0%, #34528a 100%);
+  --pf-hero-surface: #34507f;
+  --pf-hero-border: transparent;
+}
+
+body.body--dark {
+  --pf-bg: #0a0f1c;
+  --pf-surface: #121a2b;
+  --pf-text: #e7ecf5;
+  --pf-muted: #9aa7bb;
+  --pf-line: rgba(255, 255, 255, 0.08);
+  --pf-glass-bg: rgba(18, 26, 43, 0.55);
+  --pf-glass-border: rgba(255, 255, 255, 0.1);
+  --pf-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --pf-surface-2: #172136;
+  --pf-header-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 24px -16px rgba(0, 0, 0, 0.8);
+  --pf-chip-sat: 25%;
+  --pf-chip-bg: 19%;
+  --pf-chip-border: 30%;
+  --pf-chip-text-sat: 55%;
+  --pf-chip-text: 80%;
+  --pf-hero-bg: #111a2e;
+  --pf-hero-bg-image: linear-gradient(135deg, #0f1729 0%, #16223a 100%);
+  --pf-hero-surface: #16233d;
+  --pf-hero-border: rgba(255, 255, 255, 0.08);
+}
+
+/* why-no-Quasar: the hero panel is always dark, so it re-maps the base tokens for everything inside it */
+.pf-dark-panel {
+  --pf-bg: var(--pf-hero-bg);
+  --pf-surface: var(--pf-hero-surface);
+  --pf-text: #f2f5fa;
+  --pf-muted: #b6c2d6;
+  --pf-glass-bg: rgba(255, 255, 255, 0.06);
+  --pf-glass-border: rgba(255, 255, 255, 0.12);
+  --pf-shadow: none;
+  background: var(--pf-hero-bg-image);
+  border: 1px solid var(--pf-hero-border);
+  color: var(--pf-text);
+}
+
+body {
+  // One colour per skill area. Used for icons, tags and buttons of that area.
+  --pf-ai: #7c5cff;
+  --pf-backend: #1f8bff;
+  --pf-mobile: #ff8a1f;
+  --pf-web: #16b67f;
+  --pf-infra: #ff4d6d;
+  --pf-on-accent: #ffffff;
+
+  --pf-radius-card: 16px;
+  --pf-radius-control: 10px;
+  --pf-header-h: 64px;
+  --pf-gutter: 32px;
+
+  @media (max-width: 599px) {
+    --pf-gutter: 16px;
+  }
+
+  --pf-font: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --pf-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --pf-display: 'Sora', var(--pf-font);
+  --pf-reading: 'IBM Plex Sans', var(--pf-font);
+
+  background: var(--pf-bg);
+  color: var(--pf-text);
+  font-family: var(--pf-font);
+}
+
+/* why-no-Quasar: one max-width column with the same side margin for header, sections and footer */
+.pf-container {
+  width: 100%;
+  max-width: calc(1120px + 2 * var(--pf-gutter));
+  margin-inline: auto;
+  padding-inline: var(--pf-gutter);
+}
+
+/* why-no-Quasar: Quasar has no frosted-glass surface; backdrop-filter is custom */
+.pf-glass {
+  background: var(--pf-glass-bg);
+  border: 1px solid var(--pf-glass-border);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: var(--pf-shadow);
+}
+
+/* why-no-Quasar: hexagon badge is part of the site identity; Quasar has no polygon shape */
+.pf-hex {
+  width: 40px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+
+  &--tint {
+    color: var(--c);
+    background: color-mix(in srgb, var(--c) 14%, var(--pf-surface));
+  }
+
+  // clip-path hides real borders, so the outline is the outer hexagon showing around a smaller inner one.
+  &--outlined {
+    position: relative;
+    background: color-mix(in srgb, var(--c) 70%, transparent);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 1.5px;
+      clip-path: inherit;
+      background: color-mix(in srgb, var(--c) 18%, var(--pf-surface));
+    }
+
+    > * {
+      position: relative;
+    }
+  }
+}
+
+.pf-muted {
+  color: var(--pf-muted);
+}
+
+.pf-mono {
+  font-family: var(--pf-mono);
+}
+
+/* why-no-Quasar: q-btn `color` only accepts brand names; skill colours are CSS tokens */
+.pf-btn {
+  border-radius: var(--pf-radius-control);
+  font-weight: 600;
+  letter-spacing: 0;
+
+  &--solid {
+    background: var(--pf-text);
+    color: var(--pf-bg);
+  }
+
+  &--accent {
+    background: var(--c);
+    color: var(--pf-on-accent);
+  }
+
+  &--glass {
+    color: var(--pf-text);
+  }
+}
+
+/* why-no-Quasar: q-chip's own margin collides with q-gutter; a flex gap spaces chips reliably */
+.pf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* why-no-Quasar: each chip gets its own hue (--h) turned into a soft pastel per theme */
+.pf-tag {
+  border-radius: var(--pf-radius-control);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  background: hsl(var(--h) var(--pf-chip-sat) var(--pf-chip-bg));
+  color: hsl(var(--h) var(--pf-chip-text-sat) var(--pf-chip-text));
+  border: 1px solid hsl(var(--h) var(--pf-chip-sat) var(--pf-chip-border));
+  margin: 0;
+  height: auto;
+  padding: 3px 10px;
+}
