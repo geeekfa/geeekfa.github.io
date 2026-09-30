@@ -61,6 +61,13 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
     background: var(--pf-surface-2);
   }
 
+  /* why-no-Quasar: prev/next arrows are always white (control-color), which
+     disappears on the light theme's pale frame — a dark backdrop keeps them
+     visible in both themes regardless of what's under them */
+  :deep(.q-carousel__arrow .q-btn) {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
   /* why-no-Quasar: q-btn has no "outlined circle vs filled circle with icon" variant built in */
   &__dot {
     background: transparent;
