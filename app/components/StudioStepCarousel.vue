@@ -91,10 +91,9 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
   }
 
   &__detail {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--pf-muted);
-    max-width: 70ch;
     margin-top: 8px;
   }
 
