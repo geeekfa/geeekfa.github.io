@@ -75,6 +75,7 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     margin-top: 14px;
   }
