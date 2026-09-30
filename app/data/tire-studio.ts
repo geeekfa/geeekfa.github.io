@@ -126,13 +126,6 @@ export const tireStudioTabs: StudioTab[] = [
         text: 'Builds a clean wheel-opening ring, instantly.'
       },
       {
-        id: 'enhancement',
-        label: 'Enhancement',
-        icon: 'auto_fix_high',
-        image: '/images/tire-studio/side-enhancement.png',
-        text: 'Manually fixes any damage automatic repairs missed.'
-      },
-      {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
