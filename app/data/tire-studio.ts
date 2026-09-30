@@ -50,7 +50,7 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'fit-tire',
         label: 'Fit Tire',
         icon: 'straighten',
-        image: '/images/tire-studio/front-fit-tire.svg',
+        image: '/images/tire-studio/front-fit-tire.png',
         text: 'Makes sure the tire\'s shape is accurate for its exact size.'
       },
       {
