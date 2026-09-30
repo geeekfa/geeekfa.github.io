@@ -68,13 +68,6 @@ export const tireStudioTabs: StudioTab[] = [
         text: 'Repairs bent or broken tread.'
       },
       {
-        id: 'enhancement',
-        label: 'Enhancement',
-        icon: 'brush',
-        image: '/images/tire-studio/front-enhancement.png',
-        text: 'Manually touches up anything automatic repairs missed.'
-      },
-      {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
