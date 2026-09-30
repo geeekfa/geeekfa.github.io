@@ -28,7 +28,7 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'cluster',
         label: 'Cluster sizes',
         icon: 'table_chart',
-        image: '/images/tire-studio/prepare-cluster.svg',
+        image: '/images/tire-studio/prepare-cluster.png',
         text: 'Groups look-alike sizes so only the truly different ones get rendered.',
         detail:
           'Clusters sizes in a scale-invariant space — two ratios derived from the tire\'s own radius — instead of raw millimetres. A greedy set-cover algorithm then picks the fewest reference sizes needed to cover the whole list. Tolerances were calibrated against the real shipped library (25 brands, 392 sizes), cutting required renders roughly in half.'
