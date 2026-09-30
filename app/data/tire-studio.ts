@@ -43,7 +43,7 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'prepare',
         label: 'Prepare',
         icon: 'wash',
-        image: '/images/tire-studio/front-prepare.svg',
+        image: '/images/tire-studio/front-prepare.png',
         text: 'Cleans up the raw photo and gets it ready for editing.'
       },
       {
