@@ -49,22 +49,8 @@ const tab = ref(tireStudioTabs[0]?.id)
 
       <q-tab-panels v-model="tab" animated class="pf-panels">
         <q-tab-panel v-for="t in tireStudioTabs" :key="t.id" :name="t.id" class="q-pa-none">
-          <div class="row q-col-gutter-xl items-start">
-            <div class="col-12 col-md-6">
-              <q-img :src="t.image" class="rounded-borders" :ratio="4 / 3" />
-            </div>
-            <div class="col-12 col-md-6 column q-gutter-y-md">
-              <p class="pf-reading q-my-none">{{ t.summary }}</p>
-              <q-list class="pf-highlight-list">
-                <q-item v-for="(h, i) in t.highlights" :key="i" class="q-px-none">
-                  <q-item-section avatar top>
-                    <q-icon name="bolt" :style="{ color: skillColor(project.skill) }" size="18px" />
-                  </q-item-section>
-                  <q-item-section class="pf-reading">{{ h }}</q-item-section>
-                </q-item>
-              </q-list>
-            </div>
-          </div>
+          <p class="pf-reading pf-muted q-mb-lg" style="max-width: 74ch">{{ t.summary }}</p>
+          <StudioStepCarousel :steps="t.steps" :accent="skillColor(project.skill)" />
         </q-tab-panel>
       </q-tab-panels>
     </section>
