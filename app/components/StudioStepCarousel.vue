@@ -22,6 +22,7 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
       swipeable
       infinite
       :arrows="steps.length > 1"
+      :navigation="steps.length > 1"
       transition-prev="fade"
       transition-next="fade"
       height="380px"
@@ -31,26 +32,25 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
       <q-carousel-slide v-for="s in steps" :key="s.id" :name="s.id" class="q-pa-none">
         <q-img :src="s.image" class="fit" :ratio="16 / 9" fit="contain" />
       </q-carousel-slide>
+
+      <template #navigation-icon="{ index, active, onClick }">
+        <q-btn
+          round
+          unelevated
+          dense
+          :size="active ? 'md' : 'sm'"
+          :icon="active ? steps[index].icon : undefined"
+          class="pf-carousel__dot"
+          :class="{ 'pf-carousel__dot--active': active }"
+          @click="onClick"
+        />
+      </template>
     </q-carousel>
 
     <div class="pf-carousel__caption">
       <q-icon :name="current?.icon" size="22px" class="pf-carousel__icon" />
       <span class="pf-carousel__step-label">{{ current?.label }}</span>
       <span class="pf-carousel__text">{{ current?.text }}</span>
-    </div>
-
-    <div v-if="steps.length > 1" class="pf-carousel__strip">
-      <button
-        v-for="s in steps"
-        :key="s.id"
-        type="button"
-        class="pf-carousel__step"
-        :class="{ 'pf-carousel__step--active': s.id === slide }"
-        @click="slide = s.id"
-      >
-        <q-icon :name="s.icon" size="20px" />
-        <span>{{ s.label }}</span>
-      </button>
     </div>
   </div>
 </template>
@@ -59,6 +59,19 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
 .pf-carousel {
   &__frame {
     background: var(--pf-surface-2);
+  }
+
+  /* why-no-Quasar: q-btn has no "outlined circle vs filled circle with icon" variant built in */
+  &__dot {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: transparent;
+
+    &--active {
+      background: var(--c);
+      border-color: var(--c);
+      color: var(--pf-on-accent);
+    }
   }
 
   &__caption {
@@ -87,44 +100,6 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
     font-size: 17px;
     line-height: 1.5;
     color: var(--pf-text);
-  }
-
-  &__strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-
-  &__step {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--pf-font);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 7px 12px;
-    border-radius: var(--pf-radius-control);
-    border: 1px solid var(--pf-line);
-    background: var(--pf-surface);
-    color: var(--pf-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-
-    :deep(.q-icon) {
-      color: inherit;
-    }
-
-    &:hover {
-      border-color: var(--c);
-      color: var(--pf-text);
-    }
-
-    &--active {
-      background: var(--c);
-      border-color: var(--c);
-      color: var(--pf-on-accent);
-    }
   }
 }
 </style>
