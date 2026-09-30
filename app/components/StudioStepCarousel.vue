@@ -29,7 +29,7 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
       control-color="white"
     >
       <q-carousel-slide v-for="s in steps" :key="s.id" :name="s.id" class="q-pa-none">
-        <q-img :src="s.image" class="fit" :ratio="16 / 9" />
+        <q-img :src="s.image" class="fit" :ratio="16 / 9" fit="contain" />
       </q-carousel-slide>
     </q-carousel>
 
