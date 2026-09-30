@@ -52,7 +52,14 @@ onBeforeUnmount(() => observer?.disconnect())
       </div>
 
       <div class="row justify-end">
-        <q-btn unelevated no-caps class="pf-btn pf-btn--accent" label="More info" icon-right="arrow_forward" />
+        <q-btn
+          unelevated
+          no-caps
+          class="pf-btn pf-btn--accent"
+          label="More info"
+          icon-right="arrow_forward"
+          :to="`/projects/${project.slug}`"
+        />
       </div>
     </div>
   </div>
