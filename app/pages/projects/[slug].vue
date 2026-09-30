@@ -37,7 +37,7 @@ const whyPoints = [
       <q-btn flat no-caps class="pf-btn q-mb-md" icon="arrow_back" label="All projects" to="/#projects" />
 
       <div class="pf-hero pf-dark-panel" :style="{ '--c': skillColor(project.skill) }">
-        <q-img src="/images/tire-studio/hero.svg" class="pf-hero__img" :ratio="16 / 9" />
+        <q-img src="/images/tire-studio/hero.svg" class="pf-hero__img" :ratio="16 / 9" fit="contain" />
         <div class="pf-hero__body column q-gutter-y-sm">
           <div class="row items-center q-gutter-x-sm">
             <div class="pf-hex pf-hex--tint">
