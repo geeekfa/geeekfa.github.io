@@ -35,6 +35,25 @@ const tab = ref(tireStudioTabs[0]?.id)
     </section>
 
     <section class="pf-container q-py-xl">
+      <div class="text-h5 text-weight-bold q-mb-md">Why this exists</div>
+      <div class="pf-reading pf-muted column q-gutter-y-md q-mb-xl" style="max-width: 74ch">
+        <p class="q-my-none">
+          Most tire shops and wholesalers don't have good photos of what they sell — sometimes no photo at all.
+          A customer browsing online has no real idea what the tire looks like before they buy it.
+        </p>
+        <p class="q-my-none">
+          The honest fix — photograph every single size, in a real studio, with proper lighting and retouching —
+          would take months or years and cost a fortune. A tire line can have dozens of sizes, and a real
+          production-quality photo needs real studio work, not a quick snapshot.
+        </p>
+        <p class="q-my-none">
+          So instead of photographing every size, this tool needs only <strong>two</strong> reference photos of
+          one tire model — front and sidewall — and generates studio-quality catalog images for every size in
+          that line automatically: front, sidewall, and a 45° angle shot. What used to be impossible to afford
+          becomes a few hours of work.
+        </p>
+      </div>
+
       <div class="text-h5 text-weight-bold q-mb-md">How it works</div>
       <p class="pf-reading pf-muted q-mb-xl" style="max-width: 74ch">
         A Photoshop-like internal tool that turns two reference photos — one straight-on, one of the sidewall
