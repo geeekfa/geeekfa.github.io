@@ -4,17 +4,12 @@ import type { StudioStep } from '~/data/tire-studio'
 const props = defineProps<{ steps: StudioStep[]; accent: string }>()
 
 const slide = ref(props.steps[0]?.id)
-const expanded = ref(false)
 watch(
   () => props.steps,
   (steps) => {
     slide.value = steps[0]?.id
-    expanded.value = false
   }
 )
-watch(slide, () => {
-  expanded.value = false
-})
 
 const current = computed(() => props.steps.find((s) => s.id === slide.value))
 </script>
@@ -42,18 +37,8 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
       <q-icon :name="current?.icon" size="22px" class="pf-carousel__icon" />
       <span class="pf-carousel__step-label">{{ current?.label }}</span>
       <span class="pf-carousel__text">{{ current?.text }}</span>
-      <q-btn
-        flat
-        dense
-        no-caps
-        size="sm"
-        class="pf-carousel__more"
-        :label="expanded ? 'Less' : 'More'"
-        :icon-right="expanded ? 'expand_less' : 'expand_more'"
-        @click="expanded = !expanded"
-      />
     </div>
-    <p v-if="expanded" class="pf-reading pf-carousel__detail">{{ current?.detail }}</p>
+    <p class="pf-reading pf-carousel__detail">{{ current?.detail }}</p>
 
     <div v-if="steps.length > 1" class="pf-carousel__strip">
       <button
@@ -103,11 +88,6 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
     font-size: 17px;
     line-height: 1.5;
     color: var(--pf-text);
-  }
-
-  &__more {
-    color: var(--pf-muted);
-    margin-inline-start: auto;
   }
 
   &__detail {
