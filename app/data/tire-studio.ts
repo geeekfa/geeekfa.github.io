@@ -57,35 +57,35 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'clean',
         label: 'Clean',
         icon: 'cleaning_services',
-        image: '/images/tire-studio/front-clean.svg',
+        image: '/images/tire-studio/front-clean.png',
         text: 'Removes dirt and stains so damage is easier to spot and fix.'
       },
       {
         id: 'retouch',
         label: 'Retouch',
         icon: 'healing',
-        image: '/images/tire-studio/front-retouch.svg',
+        image: '/images/tire-studio/front-retouch.png',
         text: 'Repairs bent or broken tread.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'brush',
-        image: '/images/tire-studio/front-enhancement.svg',
+        image: '/images/tire-studio/front-enhancement.png',
         text: 'Manually touches up anything automatic repairs missed.'
       },
       {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
-        image: '/images/tire-studio/front-factory.svg',
+        image: '/images/tire-studio/front-factory.png',
         text: 'Gives the rubber an even, polished finish.'
       },
       {
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
-        image: '/images/tire-studio/front-size-pack.svg',
+        image: '/images/tire-studio/front-size-pack.png',
         text: 'Produces the final, correctly-shaped photo for every size.'
       }
     ]
@@ -101,63 +101,63 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'prepare',
         label: 'Prepare',
         icon: 'wash',
-        image: '/images/tire-studio/side-prepare.svg',
+        image: '/images/tire-studio/side-prepare.png',
         text: 'Cleans up and straightens the raw sidewall photo.'
       },
       {
         id: 'retouch',
         label: 'Retouch',
         icon: 'healing',
-        image: '/images/tire-studio/side-retouch.svg',
+        image: '/images/tire-studio/side-retouch.png',
         text: 'Sharpens the sidewall\'s texture and lettering.'
       },
       {
         id: 'clean',
         label: 'Clean',
         icon: 'cleaning_services',
-        image: '/images/tire-studio/side-clean.svg',
+        image: '/images/tire-studio/side-clean.png',
         text: 'Removes unwanted text or markings.'
       },
       {
         id: 'wipe-bead',
         label: 'Wipe Bead',
         icon: 'donut_large',
-        image: '/images/tire-studio/side-wipe-bead.svg',
+        image: '/images/tire-studio/side-wipe-bead.png',
         text: 'Clears the wheel-opening ring so a clean one can be built.'
       },
       {
         id: 'add-bead',
         label: 'Add Bead',
         icon: 'adjust',
-        image: '/images/tire-studio/side-add-bead.svg',
+        image: '/images/tire-studio/side-add-bead.png',
         text: 'Builds a clean wheel-opening ring, instantly.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'auto_fix_high',
-        image: '/images/tire-studio/side-enhancement.svg',
+        image: '/images/tire-studio/side-enhancement.png',
         text: 'Manually fixes any damage automatic repairs missed.'
       },
       {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
-        image: '/images/tire-studio/side-factory.svg',
+        image: '/images/tire-studio/side-factory.png',
         text: 'Gives the sidewall an even, finished look.'
       },
       {
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
-        image: '/images/tire-studio/side-size-pack.svg',
+        image: '/images/tire-studio/side-size-pack.png',
         text: 'Creates the plain sidewall image for every size.'
       },
       {
         id: 'label-pack',
         label: 'Label Pack',
         icon: 'title',
-        image: '/images/tire-studio/side-label-pack.svg',
+        image: '/images/tire-studio/side-label-pack.png',
         text: 'Adds each size\'s own text, perfectly placed — for every size, automatically.'
       }
     ]
@@ -173,28 +173,28 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
-        image: '/images/tire-studio/angle45-size-pack.svg',
+        image: '/images/tire-studio/angle45-size-pack.png',
         text: 'Generates the angled photo efficiently, one per group of similar sizes.'
       },
       {
         id: 'remove-lines',
         label: 'Remove lines',
         icon: 'layers_clear',
-        image: '/images/tire-studio/angle45-remove-lines.svg',
+        image: '/images/tire-studio/angle45-remove-lines.png',
         text: 'Cleans up leftover guide marks from generation.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'auto_fix_high',
-        image: '/images/tire-studio/angle45-enhancement.svg',
+        image: '/images/tire-studio/angle45-enhancement.png',
         text: 'Manually fixes anything still wrong.'
       },
       {
         id: 'label-pack',
         label: 'Label Pack',
         icon: 'text_fields',
-        image: '/images/tire-studio/angle45-label-pack.svg',
+        image: '/images/tire-studio/angle45-label-pack.png',
         text: 'Adds accurate size text to the hardest angle to label.'
       }
     ]
@@ -210,14 +210,14 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'watermark',
         label: 'Watermark',
         icon: 'water_drop',
-        image: '/images/tire-studio/publish-watermark.svg',
+        image: '/images/tire-studio/publish-watermark.png',
         text: 'Protects the images before they go out.'
       },
       {
         id: 'export',
         label: 'Export',
         icon: 'file_download',
-        image: '/images/tire-studio/publish-export.svg',
+        image: '/images/tire-studio/publish-export.png',
         text: 'Delivers the final files in the sizes needed.'
       }
     ]
