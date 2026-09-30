@@ -4,16 +4,23 @@ import type { StudioStep } from '~/data/tire-studio'
 const props = defineProps<{ steps: StudioStep[]; accent: string }>()
 
 const slide = ref(props.steps[0]?.id)
+const expanded = ref(false)
 watch(
   () => props.steps,
   (steps) => {
     slide.value = steps[0]?.id
+    expanded.value = false
   }
 )
+watch(slide, () => {
+  expanded.value = false
+})
+
+const current = computed(() => props.steps.find((s) => s.id === slide.value))
 </script>
 
 <template>
-  <div class="pf-carousel">
+  <div class="pf-carousel" :style="{ '--c': accent }">
     <q-carousel
       v-model="slide"
       animated
@@ -22,33 +29,43 @@ watch(
       :arrows="steps.length > 1"
       transition-prev="fade"
       transition-next="fade"
-      height="420px"
+      height="380px"
       class="pf-carousel__frame rounded-borders"
       control-color="white"
-      :style="{ '--c': accent }"
     >
       <q-carousel-slide v-for="s in steps" :key="s.id" :name="s.id" class="q-pa-none">
         <q-img :src="s.image" class="fit" :ratio="16 / 9" />
       </q-carousel-slide>
     </q-carousel>
 
-    <div class="pf-carousel__caption" :style="{ '--c': accent }">
-      <div class="pf-carousel__step-label">{{ steps.find((s) => s.id === slide)?.label }}</div>
-      <p class="pf-reading pf-carousel__text q-mb-none">{{ steps.find((s) => s.id === slide)?.text }}</p>
+    <div class="pf-carousel__caption">
+      <q-icon :name="current?.icon" size="22px" class="pf-carousel__icon" />
+      <span class="pf-carousel__step-label">{{ current?.label }}</span>
+      <span class="pf-carousel__text">{{ current?.text }}</span>
+      <q-btn
+        flat
+        dense
+        no-caps
+        size="sm"
+        class="pf-carousel__more"
+        :label="expanded ? 'Less' : 'More'"
+        :icon-right="expanded ? 'expand_less' : 'expand_more'"
+        @click="expanded = !expanded"
+      />
     </div>
+    <p v-if="expanded" class="pf-reading pf-carousel__detail">{{ current?.detail }}</p>
 
-    <div v-if="steps.length > 1" class="pf-carousel__dots">
+    <div v-if="steps.length > 1" class="pf-carousel__strip">
       <button
         v-for="s in steps"
         :key="s.id"
         type="button"
-        class="pf-carousel__dot"
-        :class="{ 'pf-carousel__dot--active': s.id === slide }"
-        :style="{ '--c': accent }"
-        :aria-label="s.label"
+        class="pf-carousel__step"
+        :class="{ 'pf-carousel__step--active': s.id === slide }"
         @click="slide = s.id"
       >
-        {{ s.label }}
+        <q-icon :name="s.icon" size="20px" />
+        <span>{{ s.label }}</span>
       </button>
     </div>
   </div>
@@ -61,42 +78,71 @@ watch(
   }
 
   &__caption {
-    padding: 20px 4px 4px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 4px;
+    margin-top: 16px;
+  }
+
+  &__icon {
+    color: var(--c);
+    align-self: center;
   }
 
   &__step-label {
     font-family: var(--pf-display);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--c);
-    margin-bottom: 6px;
   }
 
   &__text {
-    font-size: 16px;
-    line-height: 1.7;
+    font-family: var(--pf-reading);
+    font-size: 17px;
+    line-height: 1.5;
     color: var(--pf-text);
-    max-width: 68ch;
   }
 
-  &__dots {
+  &__more {
+    color: var(--pf-muted);
+    margin-inline-start: auto;
+  }
+
+  &__detail {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--pf-muted);
+    max-width: 70ch;
+    margin-top: 8px;
+  }
+
+  &__strip {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 18px;
   }
 
-  &__dot {
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-family: var(--pf-font);
     font-size: 12px;
     font-weight: 600;
-    padding: 6px 12px;
+    padding: 7px 12px;
     border-radius: var(--pf-radius-control);
     border: 1px solid var(--pf-line);
     background: var(--pf-surface);
     color: var(--pf-muted);
     cursor: pointer;
     transition: all 0.15s;
+
+    :deep(.q-icon) {
+      color: inherit;
+    }
 
     &:hover {
       border-color: var(--c);
