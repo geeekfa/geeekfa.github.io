@@ -38,7 +38,6 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
       <span class="pf-carousel__step-label">{{ current?.label }}</span>
       <span class="pf-carousel__text">{{ current?.text }}</span>
     </div>
-    <p class="pf-reading pf-carousel__detail">{{ current?.detail }}</p>
 
     <div v-if="steps.length > 1" class="pf-carousel__strip">
       <button
@@ -88,13 +87,6 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
     font-size: 17px;
     line-height: 1.5;
     color: var(--pf-text);
-  }
-
-  &__detail {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--pf-muted);
-    margin-top: 8px;
   }
 
   &__strip {

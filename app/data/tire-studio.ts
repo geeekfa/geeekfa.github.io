@@ -4,7 +4,6 @@ export interface StudioStep {
   icon: string
   image: string
   text: string
-  detail: string
 }
 
 export interface StudioTab {
@@ -22,16 +21,14 @@ export const tireStudioTabs: StudioTab[] = [
     label: 'Prepare',
     icon: 'table_chart',
     accent: 'var(--pf-ai)',
-    summary: 'Groups sizes that would render identically, so later steps only pay for sizes that actually look different.',
+    summary: 'Groups similar sizes together so we don\'t waste time generating near-identical images.',
     steps: [
       {
         id: 'cluster',
         label: 'Cluster sizes',
         icon: 'table_chart',
         image: '/images/tire-studio/prepare-cluster.png',
-        text: 'Groups look-alike sizes so only the truly different ones get rendered.',
-        detail:
-          'Compares tires by their real proportions, not raw size numbers — so a 15-inch and a 20-inch tire that look the same shape get grouped together. It then picks the smallest set of sizes that covers the whole list. Tested against 25 real brands and 392 real sizes, this cuts the number of images that need to be generated almost in half.'
+        text: 'Groups look-alike sizes so only the truly different ones get rendered — cutting the work almost in half.'
       }
     ]
   },
@@ -40,69 +37,56 @@ export const tireStudioTabs: StudioTab[] = [
     label: 'Front',
     icon: 'crop_square',
     accent: 'var(--pf-backend)',
-    summary: 'Standardizes one reference photo, repairs it in focused passes, then fans it out into every size.',
+    summary: 'Takes one straight-on photo and turns it into a clean, correct front-view image for every size.',
     steps: [
       {
         id: 'prepare',
         label: 'Prepare',
         icon: 'wash',
         image: '/images/tire-studio/front-prepare.svg',
-        text: 'Whitens and upscales the raw photo onto a standard frame.',
-        detail:
-          'Cleans up the background to plain white and sharpens the raw photo, then fits it onto a standard square canvas. The size is matched exactly to what the next AI steps expect, so no tread detail gets blurred out by resizing back and forth later.'
+        text: 'Cleans up the raw photo and gets it ready for editing.'
       },
       {
         id: 'fit-tire',
         label: 'Fit Tire',
         icon: 'straighten',
         image: '/images/tire-studio/front-fit-tire.svg',
-        text: 'Warps the photo onto a 3D-accurate outline for the exact size.',
-        detail:
-          'Builds a 3D model of the exact tire size the user typed, then reshapes the photo to match it — so every photo ends up on a standard, correct outline, no matter how it was taken. A real bug once made tread grooves look wavy; it turned out two different fixes were fighting each other, and splitting them into two separate steps solved it.'
+        text: 'Makes sure the tire\'s shape is accurate for its exact size.'
       },
       {
         id: 'clean',
         label: 'Clean',
         icon: 'cleaning_services',
         image: '/images/tire-studio/front-clean.svg',
-        text: 'Erases dirt and dye, flattens the tire to one neutral grey.',
-        detail:
-          'AI erases dirt, stains and discoloration, and repaints the tire a flat grey. This happens before any damage repair on purpose — it\'s hard to see broken tread on a dirty tire, for both the AI and a human checking the result.'
+        text: 'Removes dirt and stains so damage is easier to spot and fix.'
       },
       {
         id: 'retouch',
         label: 'Retouch',
         icon: 'healing',
         image: '/images/tire-studio/front-retouch.svg',
-        text: 'Repairs bent grooves and broken tread blocks — geometry only.',
-        detail:
-          'A second AI pass fixes only the shape of the tread — bent lines, broken chunks — never the texture. Asking the AI to fix the surface and the shape at the same time gave confusing, mixed results, so those became two separate, simpler instructions.'
+        text: 'Repairs bent or broken tread.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'brush',
         image: '/images/tire-studio/front-enhancement.svg',
-        text: 'Hand-painted spot fixes for anything else that needs it.',
-        detail:
-          'A manual tool for fixing anything the automatic steps missed. You paint over the exact damaged spot, describe what it should look like, and the AI fixes just that area — keep the result or try again. Painting by hand means only the actual damage gets touched, not the healthy rubber around it.'
+        text: 'Manually touches up anything automatic repairs missed.'
       },
       {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
         image: '/images/tire-studio/front-factory.svg',
-        text: 'Evens out the rubber compound\'s final finish.',
-        detail: 'One last AI pass that makes the rubber\'s finish look even and consistent, without touching the tread shape — like a final coat of paint after all the repairs.'
+        text: 'Gives the rubber an even, polished finish.'
       },
       {
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
         image: '/images/tire-studio/front-size-pack.svg',
-        text: 'Fans the master into every size and writes the final images.',
-        detail:
-          'Takes the one finished photo and generates a correctly-shaped version for every size in the list, straightening out any small tilt first. On a real test photo, that straightening step cut the leftover misalignment by more than 80%.'
+        text: 'Produces the final, correctly-shaped photo for every size.'
       }
     ]
   },
@@ -111,85 +95,70 @@ export const tireStudioTabs: StudioTab[] = [
     label: 'Side',
     icon: 'panorama_wide_angle',
     accent: 'var(--pf-web)',
-    summary: 'Rebuilds the wheel-opening edge, restores texture, and embosses each size\'s own text.',
+    summary: 'Takes one sidewall photo and turns it into a labeled sidewall image for every size.',
     steps: [
       {
         id: 'prepare',
         label: 'Prepare',
         icon: 'wash',
         image: '/images/tire-studio/side-prepare.svg',
-        text: 'Straightens and standardizes the raw sidewall photo.',
-        detail:
-          'Same cleanup as Front\'s Prepare step, plus an option to rotate the photo first if it was taken at an angle. This runs at a higher resolution than Front, because later steps in this section need that extra detail to line things up precisely.'
+        text: 'Cleans up and straightens the raw sidewall photo.'
       },
       {
         id: 'retouch',
         label: 'Retouch',
         icon: 'healing',
         image: '/images/tire-studio/side-retouch.svg',
-        text: 'Sharpens and deepens the moulded relief and texture.',
-        detail: 'AI sharpens and deepens the raised lettering and texture on the sidewall — it only enhances what\'s there, it doesn\'t remove anything.'
+        text: 'Sharpens the sidewall\'s texture and lettering.'
       },
       {
         id: 'clean',
         label: 'Clean',
         icon: 'cleaning_services',
         image: '/images/tire-studio/side-clean.svg',
-        text: 'Erases unwanted text from a hand-drawn region.',
-        detail:
-          'You draw around any unwanted text or marking, and the AI erases it and fills in the surface naturally — one area at a time. This uses the exact same tool as the Enhancement step below, just for a different job.'
+        text: 'Removes unwanted text or markings.'
       },
       {
         id: 'wipe-bead',
         label: 'Wipe Bead',
         icon: 'donut_large',
         image: '/images/tire-studio/side-wipe-bead.svg',
-        text: 'Detects and clears the wheel-opening ring.',
-        detail: 'Automatically finds the ring around the wheel opening, lets you fine-tune its position, then clears it to plain white — making room to build a clean new one in the next step.'
+        text: 'Clears the wheel-opening ring so a clean one can be built.'
       },
       {
         id: 'add-bead',
         label: 'Add Bead',
         icon: 'adjust',
         image: '/images/tire-studio/side-add-bead.svg',
-        text: 'Rebuilds the ring from a cached 3D reference — instantly.',
-        detail:
-          'The slow 3D render of the ring only has to happen once and gets saved for reuse. After that, every adjustment you make is just a quick reshape of that saved image, so it updates instantly instead of re-rendering from scratch each time.'
+        text: 'Builds a clean wheel-opening ring, instantly.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'auto_fix_high',
         image: '/images/tire-studio/side-enhancement.svg',
-        text: 'Hand-painted repairs for one-off damage.',
-        detail:
-          'The same paint-and-fix tool as Front\'s Enhancement step, reused here. The one difference: the image is temporarily rotated so raised lettering faces right-side up for the AI, then rotated back before saving.'
+        text: 'Manually fixes any damage automatic repairs missed.'
       },
       {
         id: 'factory',
         label: 'Factory',
         icon: 'factory',
         image: '/images/tire-studio/side-factory.svg',
-        text: 'Recolors to matte charcoal with even lighting.',
-        detail:
-          'A real bug lived here: the instruction "make the surface uniform" accidentally told the AI to smooth away real, fine texture along with actual flaws. The fix was writing two separate, clearer instructions — one for color, one that explicitly protects the texture.'
+        text: 'Gives the sidewall an even, finished look.'
       },
       {
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
         image: '/images/tire-studio/side-size-pack.svg',
-        text: 'Remaps the finished sidewall to every size.',
-        detail: 'Generates the plain, unlabeled sidewall for every size using geometry (no AI needed for the reshaping itself), then runs one more sharpening pass on each image.'
+        text: 'Creates the plain sidewall image for every size.'
       },
       {
         id: 'label-pack',
         label: 'Label Pack',
         icon: 'title',
         image: '/images/tire-studio/side-label-pack.svg',
-        text: 'Embosses each size\'s own text along a hand-drawn arc.',
-        detail:
-          'You draw the text placement once, and it\'s saved as a proportion of the tire\'s shape — so the same drawing works correctly on a small wheel or a big one. Letter size adjusts automatically to always fit, so text can never spill over. And if anything about the placement looks unclear, the tool refuses to guess and shows a warning instead — one bad guess here would repeat across every size.'
+        text: 'Adds each size\'s own text, perfectly placed — for every size, automatically.'
       }
     ]
   },
@@ -198,41 +167,35 @@ export const tireStudioTabs: StudioTab[] = [
     label: '45°',
     icon: 'crop_rotate',
     accent: 'var(--pf-mobile)',
-    summary: 'Generates the perspective shot per size cluster, then embosses text onto the hardest geometry in the pipeline.',
+    summary: 'Generates the angled catalog shot and labels it — the hardest view to get right.',
     steps: [
       {
         id: 'size-pack',
         label: 'Size Pack',
         icon: 'grid_view',
         image: '/images/tire-studio/angle45-size-pack.svg',
-        text: 'Generates one photorealistic shot per size cluster.',
-        detail:
-          'This generates one image per group of similar sizes, not per size — reusing the grouping from the Prepare step to cut the most expensive part of the whole pipeline down to roughly a sixth of the work. One AI option occasionally flipped the tire like a mirror image; telling it to match two visible guide marks from the 3D reference fixed that.'
+        text: 'Generates the angled photo efficiently, one per group of similar sizes.'
       },
       {
         id: 'remove-lines',
         label: 'Remove lines',
         icon: 'layers_clear',
         image: '/images/tire-studio/angle45-remove-lines.svg',
-        text: 'Erases the AI\'s guide lines, left in on purpose.',
-        detail: 'Erases the colored guide lines that the previous step left in on purpose — they help the AI get the angle right during generation, then get cleaned up afterward in their own separate step.'
+        text: 'Cleans up leftover guide marks from generation.'
       },
       {
         id: 'enhancement',
         label: 'Enhancement',
         icon: 'auto_fix_high',
         image: '/images/tire-studio/angle45-enhancement.svg',
-        text: 'Hand-painted touch-ups on the real 45° geometry.',
-        detail: 'The same paint-and-fix tool used elsewhere, adapted for this angle — from a 45° view the tire\'s inner and outer edges are two different, uneven curves rather than simple circles, so the paintable area follows the real shape.'
+        text: 'Manually fixes anything still wrong.'
       },
       {
         id: 'label-pack',
         label: 'Label Pack',
         icon: 'text_fields',
         image: '/images/tire-studio/angle45-label-pack.svg',
-        text: 'Stamps text onto two independent curves — the hardest geometry here.',
-        detail:
-          'Simpler approaches (like fitting an oval shape) were tried first and didn\'t hold up on real tests. Spacing letters by their actual visible width instead of the font\'s built-in spacing fixed badly uneven gaps between characters — from wildly inconsistent down to barely noticeable.'
+        text: 'Adds accurate size text to the hardest angle to label.'
       }
     ]
   },
@@ -241,24 +204,21 @@ export const tireStudioTabs: StudioTab[] = [
     label: 'Publish',
     icon: 'send',
     accent: 'var(--pf-infra)',
-    summary: 'Watermarks and repackages the finished images into fixed export sizes — never touching the originals.',
+    summary: 'Protects and delivers the finished catalog images.',
     steps: [
       {
         id: 'watermark',
         label: 'Watermark',
         icon: 'water_drop',
         image: '/images/tire-studio/publish-watermark.svg',
-        text: 'Stamps a copy with visible + hidden ownership marks.',
-        detail: 'Makes a copy of each finished image with a light visible watermark, plus hidden copyright info saved inside the file — this only happens once every angle for a size is ready, and the original files are never changed.'
+        text: 'Protects the images before they go out.'
       },
       {
         id: 'export',
         label: 'Export',
         icon: 'file_download',
         image: '/images/tire-studio/publish-export.svg',
-        text: 'Packages the final sizes — never touching the originals.',
-        detail:
-          'Saves the final images in three fixed sizes, any combination you pick, in one go. It always works from the watermarked copies, never the originals — so an un-watermarked image can never accidentally go out the door.'
+        text: 'Delivers the final files in the sizes needed.'
       }
     ]
   }
