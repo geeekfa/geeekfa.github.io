@@ -113,7 +113,7 @@ export const projects: Project[] = [
     summary:
       'A self-hosted open-source language model on a dedicated GPU, served through a private OpenAI-compatible API behind a reverse proxy.',
     skill: 'infra',
-    tags: ['llama.cpp', 'Qwen3.8-27B', 'Gemma 4', 'DeepSeek', 'GPU tuning', 'Docker Compose', 'Nginx']
+    tags: ['llama.cpp', 'Qwen3.8-27B', 'Gemma 4', 'DeepSeek', 'whisper.cpp', 'GPU tuning', 'Docker Compose', 'Nginx']
   },
   {
     slug: 'telegram-bot',

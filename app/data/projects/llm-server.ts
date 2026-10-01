@@ -56,6 +56,12 @@ export const llmServerFeatures: Feature[] = [
     icon: 'security',
     title: 'Sits behind its own doorman',
     text: 'A reverse proxy sits in front of the server, so it only answers requests it trusts instead of being wide open to anything on the network.'
+  },
+  {
+    id: 'speech-to-text',
+    icon: 'mic',
+    title: 'Understands speech too, not just typed text',
+    text: 'I added whisper.cpp, an open-source speech-to-text model, running locally right next to the language model. So the same server can turn someone talking into text and then answer it, all without sending audio anywhere else.'
   }
 ]
 
