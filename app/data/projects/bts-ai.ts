@@ -95,4 +95,4 @@ export const storeLinks: { label: string; url: string; icon: string }[] = []
 
 export const finaleLine = ['Ask a question like you would ask a person.', 'Get back an answer you can actually trust.']
 
-export const heroImage = '/images/bts-ai/hero.svg'
+export const heroImage = '/images/bts-ai/hero.png'
