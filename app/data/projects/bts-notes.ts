@@ -5,19 +5,19 @@ export const whyPoints = [
     icon: 'help_outline',
     color: 'var(--pf-infra)',
     title: 'The problem',
-    text: 'Every department — field sales, HR, regional managers, warranty, and more — tracked their work however they could: paper forms, text messages, or just memory. None of it could be searched, compared, or trusted.'
+    text: 'Every team at the company had their own way of tracking their work. Sales, HR, regional managers, warranty, you name it. Mostly paper forms, texts, or just memory. Nobody could search it, compare it, or even trust it was true.'
   },
   {
     icon: 'schedule',
     color: 'var(--pf-mobile)',
     title: 'The honest fix costs too much',
-    text: 'All of it used to run on paper forms. Most got lost, ignored, or never looked at twice. And the forms that did survive still had to be retyped into a computer by hand before anyone could study them — hours or days of work, every time, just to ask one question of the data.'
+    text: 'It all used to run on paper. Most of it got lost or just ignored. Even the forms that survived still had to be typed into a computer by hand before anyone could actually look at them. That took hours, sometimes days, just to answer one simple question.'
   },
   {
     icon: 'bolt',
     color: 'var(--pf-ai)',
     title: 'What I built instead',
-    text: 'One app, one engine — every department gets its own questions and flow, chosen from a database instead of hardcoded into the app. And because every answer is structured data from the moment it\'s typed, it feeds straight into AI-powered analysis and reporting instead of a filing cabinet.'
+    text: 'One app for every team, but each one gets its own questions. Nothing is hardcoded, it all comes from a database. And since the answers are already organized the moment they\'re typed, they can go straight into AI analysis and reports instead of sitting in a drawer.'
   }
 ]
 
@@ -33,13 +33,13 @@ export const btsNotesFeatures: Feature[] = [
     id: 'data-driven',
     icon: 'dynamic_form',
     title: 'One app, every department',
-    text: 'Sales, HR, regional managers, warranty — each team gets its own questions and flow, powered by the same app. No new release needed to change what\'s asked.'
+    text: 'Sales, HR, regional managers, warranty, you name it. Each team gets its own questions and flow, powered by the same app. No new release needed to change what\'s asked.'
   },
   {
     id: 'answer-types',
     icon: 'checklist',
     title: 'Whatever the moment calls for',
-    text: 'Type, talk, snap a photo, sign your name, or just tap yes or no — the app adapts to the question instead of forcing everything into one text box.'
+    text: 'Type, talk, snap a photo, sign your name, or just tap yes or no. The app adapts to the question instead of forcing everything into one text box.'
   },
   {
     id: 'branching',
@@ -51,7 +51,7 @@ export const btsNotesFeatures: Feature[] = [
     id: 'review',
     icon: 'fact_check',
     title: 'Catch mistakes before they\'re sent',
-    text: 'Everything shows up as a simple chat you can scroll back through — tap any answer to fix it before submitting.'
+    text: 'Everything shows up as a simple chat you can scroll back through. Tap any answer to fix it before you submit.'
   },
   {
     id: 'resume',
@@ -63,13 +63,13 @@ export const btsNotesFeatures: Feature[] = [
     id: 'offline-sync',
     icon: 'cloud_sync',
     title: 'Works with zero signal',
-    text: 'No internet, no problem — everything saves on the phone and quietly syncs the moment you\'re back online.'
+    text: 'No internet, no problem. Everything saves on the phone and quietly syncs the moment you\'re back online.'
   },
   {
     id: 'etrack',
     icon: 'qr_code_scanner',
     title: 'Scan a package without breaking stride',
-    text: 'A built-in mode for incoming packages: scan the barcode, hear a tone, keep moving — no screen-watching required.'
+    text: 'A built-in mode for incoming packages. Scan the barcode, hear a tone, keep moving. No screen-watching required.'
   },
   {
     id: 'cross-platform',
@@ -90,8 +90,8 @@ export interface GalleryImage {
 // numeric filename order (see the manifest generator in nuxt.config.ts). Add a caption here
 // when a screenshot needs explaining.
 const galleryCaptions: Record<string, string> = {
-  '1': 'The home screen — every tile is a category pulled from the database.',
-  '2': 'Picking the customer for a visit — nearby stores ranked by live GPS distance.'
+  '1': 'The home screen. Every tile is a category pulled from the database.',
+  '2': 'Picking the customer for a visit. Nearby stores ranked by live GPS distance.'
 }
 
 const galleryFiles = galleryManifest as string[]
