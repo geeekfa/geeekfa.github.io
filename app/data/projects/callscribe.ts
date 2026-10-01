@@ -21,7 +21,7 @@ export const whyPoints = [
   }
 ]
 
-export const finaleLine = ['Drop in a call.', 'Get back who said what, and how it went.']
+export const finaleLine = ['A call comes in.', 'A few minutes later, you know exactly how it went.']
 
 export const heroImage = '/images/callscribe/hero.png'
 
