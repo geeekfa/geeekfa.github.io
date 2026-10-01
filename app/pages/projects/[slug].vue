@@ -76,6 +76,17 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       storeLinks: [],
       finaleLine: m.finaleLine
     }
+  },
+  callscribe: async () => {
+    const m = await import('~/data/projects/callscribe')
+    return {
+      kind: 'pipeline',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      introLine: m.introLine,
+      tabs: m.callscribeTabs,
+      finaleLine: m.finaleLine
+    }
   }
 }
 
