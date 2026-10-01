@@ -23,7 +23,7 @@ export const whyPoints = [
 
 export const finaleLine = ['Drop in a call.', 'Get back who said what, and how it went.']
 
-export const heroImage = '/images/callscribe/hero.svg'
+export const heroImage = '/images/callscribe/hero.png'
 
 export const introLine = 'A recorded call goes in, a scored, readable transcript comes out. Each stage builds on the last.'
 
