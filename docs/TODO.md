@@ -54,6 +54,14 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       to tell the story). Real hero image and screenshots for transcribe/
       roles/quality all in. See
       `docs/projects/callscribe.md`.
+- [x] FS Phone Screen project detail page — pipeline shape, 4 stages (sign
+      in and connect, a call comes in, find the right agent, screen pops),
+      confirmed with Salman first. No real screenshots exist for this
+      project (small backend + a Windows tray app) and Salman confirmed
+      none are coming, so it ships with a placeholder hero SVG and
+      text-only steps (no step images at all). Icons picked by hand since
+      the app itself has no step-level icons to pull from. See
+      `docs/projects/fs-phone-screen.md`.
 
 ## Backlog
 
