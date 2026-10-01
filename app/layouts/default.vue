@@ -6,7 +6,7 @@ const drawer = ref(false)
 
 const links = [
   { label: 'About', to: '/about' },
-  { label: 'Resume', href: '/resume.pdf' }
+  { label: 'Resume', href: '/Resume.pdf' }
 ]
 </script>
 

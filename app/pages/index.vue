@@ -30,7 +30,7 @@ import { projects } from '~/data/projects'
                 class="pf-btn pf-btn--solid"
                 label="Resume"
                 icon="description"
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
               />
             </div>
