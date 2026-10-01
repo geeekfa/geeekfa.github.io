@@ -23,8 +23,21 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       much", copy-pasted and not tailored to BTS Notes).
 - [x] Added a human-sounding-copy rule to memory: no em dashes, no AI-sounding
       phrasing, in any page copy — check before shipping.
+- [x] BTS AI project detail page — features shape, 3 areas (Visit Notes
+      Analyst, Document Central, TSM Dashboard). Generalized the gallery
+      manifest generator in `nuxt.config.ts` to take a slug instead of being
+      hardcoded to BTS Notes. Hero is a placeholder SVG until Salman makes or
+      generates a real one; gallery is empty until he drops screenshots into
+      `public/images/bts-ai/` (needs a privacy check first, internal tool
+      with real customer data). See `docs/projects/bts-ai.md`.
 
 ## Backlog
+
+- [ ] BTS AI: real hero image (ask Salman: build it himself or get an AI
+      image prompt, same "INPUT → OUTPUT" dark-background style as the other
+      two heroes, using `--pf-ai` accent).
+- [ ] BTS AI: real screenshots for the gallery once Salman has some that are
+      safe to publish (no real customer names/notes visible).
 
 - [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
       currently point at "/")
