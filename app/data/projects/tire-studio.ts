@@ -25,7 +25,7 @@ export const whyPoints = [
   {
     icon: 'schedule',
     color: 'var(--pf-mobile)',
-    title: 'The honest fix costs too much',
+    title: 'The traditional fix',
     text: 'Doing it right in a real studio takes months and a lot of money. A single tire line can have dozens of sizes, and catalog-quality photos need real studio work, not just a quick snapshot.'
   },
   {

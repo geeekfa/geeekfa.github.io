@@ -10,7 +10,7 @@ export const whyPoints = [
   {
     icon: 'schedule',
     color: 'var(--pf-mobile)',
-    title: 'The honest fix costs too much',
+    title: 'The traditional fix',
     text: 'It all used to run on paper. Most of it got lost or just ignored. Even the forms that survived still had to be typed into a computer by hand before anyone could actually look at them. That took hours, sometimes days, just to answer one simple question.'
   },
   {
