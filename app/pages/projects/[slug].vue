@@ -86,7 +86,7 @@ const whyPoints = [
 
     <section class="pf-container q-py-xl">
       <div class="text-h5 text-weight-bold q-mb-md">What this shows</div>
-      <q-list class="pf-highlight-list" style="max-width: 78ch">
+      <q-list class="pf-highlight-list">
         <q-item v-for="(p, i) in tireStudioPatterns" :key="i" class="q-px-none">
           <q-item-section avatar top>
             <q-icon name="check_circle" color="positive" size="18px" />
