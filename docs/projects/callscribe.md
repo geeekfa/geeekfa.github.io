@@ -15,7 +15,11 @@ on a Mac M4 Pro / server RHEL9+L4 GPU, OpenAI for the LLM stages, SQLite for
 CallScribe's own state (jobs, viewer feedback), SQL Server (Portal DB) for
 the one narrow write-back.
 
-## Pipeline stages (confirmed with Salman, 6 stages)
+## Pipeline stages (confirmed with Salman, 7 stages — a 7th, "Fix industry
+terms", was added after a full-page review caught that the homepage summary
+card mentioned it but the detail page didn't; it's real,
+`api/app/text_normalization.py` + `currency_correction.py`, sits right
+after Transcribe in `worker.py`'s actual stage order)
 
 ### 1. Get the call
 Two entry paths, same downstream pipeline (`worker.process_job`):
@@ -38,7 +42,21 @@ faster" marketing) — fully reverted, not left as a flag. Didn't put this
 story on the page itself (it's a hardware/tooling aside, not part of the
 "how a call becomes a score" flow) but it's a strong interview anecdote.
 
-### 3. Tell speakers apart (speaker attribution)
+### 3. Fix industry terms
+Pure-mechanics correction step, no LLM judgment on *whether* to fix something,
+only *how* (that judgment lives in `currency_correction.py`, which asks an
+LLM). Whisper `large-v3` renders most spoken numbers in these calls as dollar
+amounts, so a tire size read aloud as "two fifteen, fifty-five, eighteen"
+arrives as `$215,518`. Two shapes handled: `$`-prefixed amounts (strip the
+`$` and thousands separators) and bare dash-separated digit groups like
+`185-60R15` (rewritten with the right separators). Real rejected alternative:
+fixing it via the whisper seed prompt was tried and abandoned — any prompt
+containing digit sequences collapses whisper's segment boundaries, which
+merges entire calls onto one speaker since labels are assigned per segment.
+Logged in `docs/experiments.md`, "tire sizes in the whisper seed prompt"
+(2026-08-19).
+
+### 4. Tell speakers apart (speaker attribution)
 The real engineering story. Early versions tried transcribing each channel
 separately — compacted, muted, attenuated, raw — all four failed for
 different reasons (welding distant utterances together, deleting 22% of real
@@ -54,7 +72,7 @@ Page copy keeps this high-level ("an early version kept gluing sentences
 together") rather than naming WIN_SHARE/MIN_VOTES thresholds or the rejected
 approaches — too technical for a recruiter, per the writing rules.
 
-### 4. Label roles
+### 5. Label roles
 LLM assigns each transcript segment one of: `agent`, `customer`, `voicemail`,
 `ivr`, `unknown`. Real edge case worth remembering (not on the page, in case
 Salman wants it in interview prep): on an internal call (both parties are
@@ -63,7 +81,7 @@ A real regression (`phoneEvent_ID 114008`) where the model was told
 "outbound + employee name" and invented a customer; fixed by keying off
 `call.agent_channel`, not `agent_name` alone.
 
-### 5. Score the call (quality review)
+### 6. Score the call (quality review)
 Third LLM stage, never modifies the transcript. Produces:
 - `call_category` (customer_service / agent_to_agent / personal_call /
   ivr_blocked / voicemail / no_agent_speech / other)
@@ -81,7 +99,7 @@ Third LLM stage, never modifies the transcript. Produces:
 Page copy collapses all of this into one step per Salman's call (asked
 explicitly, he said one summarized step rather than 4 sub-steps).
 
-### 6. Review & share
+### 7. Review & share
 Portal `JobResultsView.vue` — tabs for Speakers / Roles / Quality / Video
 (operator mode) or a trimmed viewer mode (no Speakers tab, inline player
 instead of Video tab) for the shareable-link page. Shared link auth rides in

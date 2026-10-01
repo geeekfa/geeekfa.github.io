@@ -44,12 +44,15 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       page, not silent hiding) and the Monday.com bullet (pushes status out
       to a board item, doesn't pull orders in). See
       `docs/projects/agm-office.md`.
-- [x] CallScribe project detail page — pipeline shape, 6 stages (get the
-      call, transcribe, tell speakers apart, label roles, score the call,
-      review & share), confirmed stage-by-stage with Salman first. Quality
-      checklist topic names and sales-program details kept out of the copy
-      (proprietary client business detail, not needed to tell the story).
-      Hero and all step images are placeholder SVGs for now. See
+- [x] CallScribe project detail page — pipeline shape, 7 stages (get the
+      call, transcribe, fix industry terms, tell speakers apart, label
+      roles, score the call, review the results), confirmed stage-by-stage
+      with Salman first. "Fix industry terms" was added after a full-page
+      review caught it was missing even though the homepage summary
+      mentioned it. Quality checklist topic names and sales-program details
+      kept out of the copy (proprietary client business detail, not needed
+      to tell the story). Real hero image and screenshots for transcribe/
+      roles/quality all in. See
       `docs/projects/callscribe.md`.
 
 ## Backlog
@@ -59,15 +62,6 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       two heroes, using `--pf-ai` accent).
 - [ ] BTS AI: real screenshots for the gallery once Salman has some that are
       safe to publish (no real customer names/notes visible).
-
-- [ ] CallScribe: real hero image (ask Salman: build it himself or get an AI
-      image prompt, `--pf-ai` accent).
-- [ ] CallScribe: real screenshots for "Get the call" (upload + phone event
-      ID), "Transcribe", "Label roles" (Salman said he has one screenshot
-      that mostly fits the roles step, maybe reusable for speaker voting
-      too), "Score the call", and "Results page" — swap in as Salman sends
-      them, filenames already match the slot names in
-      `public/images/callscribe/`.
 
 - [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
       currently point at "/")
