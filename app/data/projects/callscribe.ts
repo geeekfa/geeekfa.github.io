@@ -114,8 +114,8 @@ export const callscribeTabs: StudioTab[] = [
   },
   {
     id: 'review',
-    label: 'Review & share',
-    icon: 'share',
+    label: 'Review the results',
+    icon: 'tab',
     accent: 'var(--pf-ai)',
     summary: 'The finished result is a web page anyone can read, not a raw file someone has to dig through.',
     steps: [
@@ -124,12 +124,6 @@ export const callscribeTabs: StudioTab[] = [
         label: 'Results page',
         icon: 'tab',
         text: 'Shows the speakers, the roles, the quality score and the video all in one place, with tabs to flip between them.'
-      },
-      {
-        id: 'share',
-        label: 'Share a link',
-        icon: 'link',
-        text: 'A call can be shared with a link that works without logging in, and anyone looking at it can leave feedback or ask for the call to be re-checked.'
       }
     ]
   }
