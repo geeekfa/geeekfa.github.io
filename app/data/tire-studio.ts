@@ -170,13 +170,6 @@ export const tireStudioTabs: StudioTab[] = [
         text: 'Cleans up leftover guide marks from generation.'
       },
       {
-        id: 'enhancement',
-        label: 'Enhancement',
-        icon: 'auto_fix_high',
-        image: '/images/tire-studio/angle45-enhancement.png',
-        text: 'Manually fixes anything still wrong.'
-      },
-      {
         id: 'label-pack',
         label: 'Label Pack',
         icon: 'text_fields',
