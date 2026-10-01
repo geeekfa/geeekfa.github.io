@@ -39,14 +39,12 @@ export const callscribeTabs: StudioTab[] = [
         id: 'upload',
         label: 'Upload a file',
         icon: 'upload_file',
-        image: '/images/callscribe/input-upload.svg',
         text: 'Someone drops in a recorded call file directly.'
       },
       {
         id: 'phone-event',
         label: 'Phone event ID',
         icon: 'dialpad',
-        image: '/images/callscribe/input-phone-event.svg',
         text: 'Or just paste in the call\'s ID and the system finds and downloads the recording on its own.'
       }
     ]
@@ -125,7 +123,6 @@ export const callscribeTabs: StudioTab[] = [
         id: 'results',
         label: 'Results page',
         icon: 'tab',
-        image: '/images/callscribe/review-results.svg',
         text: 'Shows the speakers, the roles, the quality score and the video all in one place, with tabs to flip between them.'
       },
       {
