@@ -2,42 +2,50 @@
 import { projects } from '~/data/projects'
 import { skillByKey, skillColor } from '~/data/skills'
 import { tagHueOf } from '~/data/tags'
-import { tireStudioTabs } from '~/data/tire-studio'
 import { techLinks } from '~/data/tech-links'
+import type { StudioTab } from '~/data/projects/tire-studio'
+
+interface ProjectContent {
+  tabs: StudioTab[]
+  whyPoints: { icon: string; color: string; title: string; text: string }[]
+  finaleLine: string[]
+}
+
+const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
+  'tire-studio': async () => {
+    const m = await import('~/data/projects/tire-studio')
+    return { tabs: m.tireStudioTabs, whyPoints: m.whyPoints, finaleLine: m.finaleLine }
+  },
+  'bts-notes': async () => {
+    const m = await import('~/data/projects/bts-notes')
+    return { tabs: m.btsNotesTabs, whyPoints: m.whyPoints, finaleLine: m.finaleLine }
+  }
+}
 
 const route = useRoute()
 const project = computed(() => projects.find((p) => p.slug === route.params.slug))
 const skill = computed(() => (project.value ? skillByKey(project.value.skill) : undefined))
 
-const whyPoints = [
-  {
-    icon: 'visibility_off',
-    color: 'var(--pf-infra)',
-    title: 'The problem',
-    text: 'Most tire shops and wholesalers have no good photos of what they sell — some have none at all. A shopper online has no real idea what the tire looks like before buying it.'
-  },
-  {
-    icon: 'schedule',
-    color: 'var(--pf-mobile)',
-    title: 'The honest fix costs too much',
-    text: 'Photographing every size in a real studio, done right, takes months and a serious budget — a line can have dozens of sizes, and catalog-grade photos need real studio work, not a snapshot.'
-  },
-  {
-    icon: 'bolt',
-    color: 'var(--pf-ai)',
-    title: 'What I built instead',
-    text: 'Feed it just two reference photos of one tire model — front and sidewall — and it generates studio-quality catalog images for every size in that line automatically. Months of studio work, down to hours.'
-  }
-]
+const content = ref<ProjectContent>()
+watchEffect(async () => {
+  const slug = route.params.slug as string
+  const loader = contentRegistry[slug]
+  content.value = loader ? await loader() : undefined
+})
+
+const tabs = computed(() => content.value?.tabs ?? [])
+const whyPoints = computed(() => content.value?.whyPoints ?? [])
+const finaleLine = computed(() => content.value?.finaleLine ?? [])
+const found = computed(() => !!project.value && !!content.value)
 </script>
 
 <template>
-  <q-page v-if="project">
+  <q-page v-if="found">
     <section class="pf-container q-pt-lg">
       <q-btn flat no-caps class="pf-btn q-mb-md" icon="arrow_back" label="All projects" to="/#projects" />
 
       <div class="pf-hero pf-dark-panel" :style="{ '--c': skillColor(project.skill) }">
-        <q-img src="/images/tire-studio/hero.png" class="pf-hero__img" :ratio="16 / 9" fit="contain" />
+        <q-img :src="`/images/${project.slug}/hero.png`" class="pf-hero__img" :ratio="16 / 9" fit="contain" />
         <div class="pf-hero__body column q-gutter-y-sm">
           <div class="row items-center q-gutter-x-sm">
             <div class="pf-hex pf-hex--tint">
@@ -71,7 +79,7 @@ const whyPoints = [
       </p>
     </section>
 
-    <section v-for="t in tireStudioTabs" :key="t.id" class="pf-container q-pb-xl">
+    <section v-for="t in tabs" :key="t.id" class="pf-container q-pb-xl">
       <div class="pf-stage" :style="{ '--c': t.accent }">
         <div class="pf-stage__head row items-center q-gutter-x-sm q-mb-xs">
           <div class="pf-hex pf-hex--tint">
@@ -104,11 +112,12 @@ const whyPoints = [
     <section class="pf-container q-pb-xl">
       <div class="pf-finale">
         <div class="pf-finale__dots" aria-hidden="true">
-          <span v-for="t in tireStudioTabs" :key="t.id" class="pf-finale__dot" :style="{ '--c': t.accent }" />
+          <span v-for="t in tabs" :key="t.id" class="pf-finale__dot" :style="{ '--c': t.accent }" />
         </div>
         <p class="pf-finale__quote">
-          Give it two photos.<br />
-          Get back an entire catalog.
+          <template v-for="(line, i) in finaleLine" :key="i">
+            {{ line }}<br v-if="i < finaleLine.length - 1" />
+          </template>
         </p>
         <q-btn
           unelevated

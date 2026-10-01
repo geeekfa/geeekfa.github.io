@@ -15,6 +15,29 @@ export interface StudioTab {
   steps: StudioStep[]
 }
 
+export const whyPoints = [
+  {
+    icon: 'visibility_off',
+    color: 'var(--pf-infra)',
+    title: 'The problem',
+    text: 'Most tire shops and wholesalers have no good photos of what they sell — some have none at all. A shopper online has no real idea what the tire looks like before buying it.'
+  },
+  {
+    icon: 'schedule',
+    color: 'var(--pf-mobile)',
+    title: 'The honest fix costs too much',
+    text: 'Photographing every size in a real studio, done right, takes months and a serious budget — a line can have dozens of sizes, and catalog-grade photos need real studio work, not a snapshot.'
+  },
+  {
+    icon: 'bolt',
+    color: 'var(--pf-ai)',
+    title: 'What I built instead',
+    text: 'Feed it just two reference photos of one tire model — front and sidewall — and it generates studio-quality catalog images for every size in that line automatically. Months of studio work, down to hours.'
+  }
+]
+
+export const finaleLine = ['Give it two photos.', 'Get back an entire catalog.']
+
 export const tireStudioTabs: StudioTab[] = [
   {
     id: 'prepare',
