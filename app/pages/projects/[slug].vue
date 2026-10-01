@@ -174,7 +174,7 @@ const finaleDotColors = computed(() =>
     </section>
 
     <section v-if="featureList?.storeLinks.length" class="pf-container q-pb-xl">
-      <div class="text-h5 text-weight-bold q-mb-md">Get the app</div>
+      <div class="text-h5 text-weight-bold q-mb-md">Live on the app stores</div>
       <div class="row q-gutter-sm">
         <q-btn
           v-for="s in featureList.storeLinks"
