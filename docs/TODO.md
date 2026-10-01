@@ -12,14 +12,20 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       Studio.
 - [x] BTS Notes project detail page — different shape from Tire Studio (hero
       → why-it-exists → 8 feature bullets → screenshot gallery → tech stack
-      → closing line), per Salman's direction. One real screenshot (home
-      screen category grid) in the gallery; hero is still a placeholder, see
-      `docs/projects/bts-notes.md`.
+      → closing line), per Salman's direction. Done end to end: real hero
+      image (AI-generated paperwork-to-app diagram), all 8 real screenshots
+      with captions, backend tech stack added (FastAPI/Python/OpenAI/MySQL/
+      SQL Server/Redis from the conversation-api project), App Store/Google
+      Play links, copy reviewed twice for accuracy and for AI-sounding
+      phrasing (em dashes, invented details). See `docs/projects/bts-notes.md`.
+- [x] Shared the "The traditional fix" why-card title across both Tire
+      Studio and BTS Notes for consistency (was "The honest fix costs too
+      much", copy-pasted and not tailored to BTS Notes).
+- [x] Added a human-sounding-copy rule to memory: no em dashes, no AI-sounding
+      phrasing, in any page copy — check before shipping.
 
 ## Backlog
 
-- [ ] BTS Notes: real hero image, and more gallery screenshots as Salman
-      sends them (`app/data/projects/bts-notes.ts` → `btsNotesGallery`)
 - [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
       currently point at "/")
 - [ ] Wire up the "About" nav link, or decide the site doesn't need one
