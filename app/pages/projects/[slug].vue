@@ -87,6 +87,17 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       tabs: m.callscribeTabs,
       finaleLine: m.finaleLine
     }
+  },
+  'fs-phone-screen': async () => {
+    const m = await import('~/data/projects/fs-phone-screen')
+    return {
+      kind: 'pipeline',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      introLine: m.introLine,
+      tabs: m.fsPhoneScreenTabs,
+      finaleLine: m.finaleLine
+    }
   }
 }
 
