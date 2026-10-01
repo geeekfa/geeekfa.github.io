@@ -38,6 +38,10 @@ export const whyPoints = [
 
 export const finaleLine = ['Give it two photos.', 'Get back an entire catalog.']
 
+export const heroImage = '/images/tire-studio/hero.png'
+
+export const introLine = 'Two reference photos in, a full catalog out — five stages, each doing one job.'
+
 export const tireStudioTabs: StudioTab[] = [
   {
     id: 'prepare',

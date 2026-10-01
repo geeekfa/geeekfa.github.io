@@ -4,21 +4,52 @@ import { skillByKey, skillColor } from '~/data/skills'
 import { tagHueOf } from '~/data/tags'
 import { techLinks } from '~/data/tech-links'
 import type { StudioTab } from '~/data/projects/tire-studio'
+import type { Feature, GalleryImage } from '~/data/projects/bts-notes'
 
-interface ProjectContent {
+type WhyPoint = { icon: string; color: string; title: string; text: string }
+
+interface PipelineContent {
+  kind: 'pipeline'
+  heroImage: string
+  whyPoints: WhyPoint[]
+  introLine: string
   tabs: StudioTab[]
-  whyPoints: { icon: string; color: string; title: string; text: string }[]
   finaleLine: string[]
 }
+
+interface FeatureListContent {
+  kind: 'features'
+  heroImage: string
+  whyPoints: WhyPoint[]
+  features: Feature[]
+  gallery: GalleryImage[]
+  finaleLine: string[]
+}
+
+type ProjectContent = PipelineContent | FeatureListContent
 
 const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
   'tire-studio': async () => {
     const m = await import('~/data/projects/tire-studio')
-    return { tabs: m.tireStudioTabs, whyPoints: m.whyPoints, finaleLine: m.finaleLine }
+    return {
+      kind: 'pipeline',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      introLine: m.introLine,
+      tabs: m.tireStudioTabs,
+      finaleLine: m.finaleLine
+    }
   },
   'bts-notes': async () => {
     const m = await import('~/data/projects/bts-notes')
-    return { tabs: m.btsNotesTabs, whyPoints: m.whyPoints, finaleLine: m.finaleLine }
+    return {
+      kind: 'features',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      features: m.btsNotesFeatures,
+      gallery: m.btsNotesGallery,
+      finaleLine: m.finaleLine
+    }
   }
 }
 
@@ -33,10 +64,14 @@ watchEffect(async () => {
   content.value = loader ? await loader() : undefined
 })
 
-const tabs = computed(() => content.value?.tabs ?? [])
 const whyPoints = computed(() => content.value?.whyPoints ?? [])
 const finaleLine = computed(() => content.value?.finaleLine ?? [])
 const found = computed(() => !!project.value && !!content.value)
+const pipeline = computed(() => (content.value?.kind === 'pipeline' ? content.value : undefined))
+const featureList = computed(() => (content.value?.kind === 'features' ? content.value : undefined))
+const finaleDotColors = computed(() =>
+  pipeline.value ? pipeline.value.tabs.map((t) => t.accent) : featureList.value ? ['var(--pf-ai)', 'var(--pf-backend)', 'var(--pf-web)', 'var(--pf-mobile)', 'var(--pf-infra)'] : []
+)
 </script>
 
 <template>
@@ -45,7 +80,7 @@ const found = computed(() => !!project.value && !!content.value)
       <q-btn flat no-caps class="pf-btn q-mb-md" icon="arrow_back" label="All projects" to="/#projects" />
 
       <div class="pf-hero pf-dark-panel" :style="{ '--c': skillColor(project.skill) }">
-        <q-img :src="`/images/${project.slug}/hero.png`" class="pf-hero__img" :ratio="16 / 9" fit="contain" />
+        <q-img :src="content?.heroImage" class="pf-hero__img" :ratio="16 / 9" fit="contain" />
         <div class="pf-hero__body column q-gutter-y-sm">
           <div class="row items-center q-gutter-x-sm">
             <div class="pf-hex pf-hex--tint">
@@ -72,25 +107,52 @@ const found = computed(() => !!project.value && !!content.value)
       </div>
     </section>
 
-    <section class="pf-container q-pb-md">
-      <div class="text-h5 text-weight-bold q-mb-sm">How it works</div>
-      <p class="pf-reading pf-muted q-mb-xl" style="max-width: 74ch">
-        Two reference photos in, a full catalog out — five stages, each doing one job.
-      </p>
-    </section>
+    <template v-if="pipeline">
+      <section class="pf-container q-pb-md">
+        <div class="text-h5 text-weight-bold q-mb-sm">How it works</div>
+        <p class="pf-reading pf-muted q-mb-xl" style="max-width: 74ch">
+          {{ pipeline.introLine }}
+        </p>
+      </section>
 
-    <section v-for="t in tabs" :key="t.id" class="pf-container q-pb-xl">
-      <div class="pf-stage" :style="{ '--c': t.accent }">
-        <div class="pf-stage__head row items-center q-gutter-x-sm q-mb-xs">
-          <div class="pf-hex pf-hex--tint">
-            <q-icon :name="t.icon" size="20px" />
+      <section v-for="t in pipeline.tabs" :key="t.id" class="pf-container q-pb-xl">
+        <div class="pf-stage" :style="{ '--c': t.accent }">
+          <div class="pf-stage__head row items-center q-gutter-x-sm q-mb-xs">
+            <div class="pf-hex pf-hex--tint">
+              <q-icon :name="t.icon" size="20px" />
+            </div>
+            <div class="pf-stage__label">{{ t.label }}</div>
           </div>
-          <div class="pf-stage__label">{{ t.label }}</div>
+          <p class="pf-reading pf-muted pf-stage__summary q-mb-lg">{{ t.summary }}</p>
+          <StudioStepCarousel :steps="t.steps" :accent="t.accent" />
         </div>
-        <p class="pf-reading pf-muted pf-stage__summary q-mb-lg">{{ t.summary }}</p>
-        <StudioStepCarousel :steps="t.steps" :accent="t.accent" />
-      </div>
-    </section>
+      </section>
+    </template>
+
+    <template v-else-if="featureList">
+      <section class="pf-container q-pb-xl">
+        <div class="text-h5 text-weight-bold q-mb-lg">What it does</div>
+        <div class="pf-features">
+          <div v-for="f in featureList.features" :key="f.id" class="pf-features__card">
+            <div class="pf-hex pf-hex--tint q-mb-sm">
+              <q-icon :name="f.icon" size="20px" />
+            </div>
+            <div class="pf-features__title">{{ f.title }}</div>
+            <p class="pf-reading pf-features__text q-mb-none">{{ f.text }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section v-if="featureList.gallery.length" class="pf-container q-pb-xl">
+        <div class="text-h5 text-weight-bold q-mb-lg">Screenshots</div>
+        <div class="pf-gallery">
+          <figure v-for="g in featureList.gallery" :key="g.id" class="pf-gallery__item">
+            <q-img :src="g.image" fit="contain" class="pf-gallery__img" />
+            <figcaption v-if="g.caption" class="pf-gallery__caption">{{ g.caption }}</figcaption>
+          </figure>
+        </div>
+      </section>
+    </template>
 
     <section class="pf-container q-py-xl">
       <div class="text-h5 text-weight-bold q-mb-md">Tech stack</div>
@@ -112,7 +174,7 @@ const found = computed(() => !!project.value && !!content.value)
     <section class="pf-container q-pb-xl">
       <div class="pf-finale">
         <div class="pf-finale__dots" aria-hidden="true">
-          <span v-for="t in tabs" :key="t.id" class="pf-finale__dot" :style="{ '--c': t.accent }" />
+          <span v-for="c in finaleDotColors" :key="c" class="pf-finale__dot" :style="{ '--c': c }" />
         </div>
         <p class="pf-finale__quote">
           <template v-for="(line, i) in finaleLine" :key="i">
@@ -224,6 +286,62 @@ const found = computed(() => !!project.value && !!content.value)
     font-size: 15px;
     line-height: 1.6;
     color: var(--pf-text);
+  }
+}
+
+/* why-no-Quasar: feature bullet grid, same card look as the why-cards but no accent rail */
+.pf-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @media (max-width: 699px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__card {
+    background: var(--pf-surface);
+    border: 1px solid var(--pf-line);
+    border-radius: var(--pf-radius-card);
+    box-shadow: var(--pf-shadow);
+    padding: 22px;
+  }
+
+  &__title {
+    font-family: var(--pf-display);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--pf-text);
+  }
+}
+
+/* why-no-Quasar: screenshot grid, each tile keeps the screenshot's own aspect ratio */
+.pf-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+
+  &__item {
+    margin: 0;
+  }
+
+  &__img {
+    border: 1px solid var(--pf-line);
+    border-radius: var(--pf-radius-card);
+    max-height: 420px;
+    background: var(--pf-surface);
+  }
+
+  &__caption {
+    font-size: 13px;
+    color: var(--pf-muted);
+    margin-top: 8px;
   }
 }
 
