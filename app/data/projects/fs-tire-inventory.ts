@@ -53,11 +53,25 @@ export const fsTireInventoryTabs: StudioTab[] = [
     summary: 'Counts every tire on the shelf and double-checks itself before trusting the number.',
     steps: [
       {
-        id: 'detect',
-        label: 'Detect & confirm',
-        icon: 'numbers',
-        image: '/images/fs-tire-inventory/counting.jpg',
-        text: 'Counts the tires, then checks that count against how the camera moved. If the two disagree, it asks a person instead of guessing.'
+        id: 'detect-boxes',
+        label: 'Detect',
+        icon: 'crop_free',
+        image: '/images/fs-tire-inventory/counting-boxes-panorama.jpg',
+        text: 'Finds every tire on the shelf and draws a box around each one, right on the full shelf picture.'
+      },
+      {
+        id: 'detected-crops-1',
+        label: 'Crop each one',
+        icon: 'grid_view',
+        image: '/images/fs-tire-inventory/counting-detected-crops-1.jpg',
+        text: 'Each box becomes its own numbered tire, ready to be checked and labeled on its own.'
+      },
+      {
+        id: 'detected-crops-2',
+        label: 'Confirm the count',
+        icon: 'view_module',
+        image: '/images/fs-tire-inventory/counting-detected-crops-2.jpg',
+        text: 'Checks that count against how the camera moved across the shelf. If the two disagree, it asks a person instead of guessing.'
       }
     ]
   },
