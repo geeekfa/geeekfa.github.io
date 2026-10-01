@@ -111,9 +111,9 @@ export const projects: Project[] = [
     slug: 'llm-server',
     name: 'LLM Server',
     summary:
-      'A self-hosted 27B-parameter language model on a dedicated GPU, served through a private OpenAI-compatible API behind a reverse proxy.',
+      'A self-hosted open-source language model on a dedicated GPU, served through a private OpenAI-compatible API behind a reverse proxy.',
     skill: 'infra',
-    tags: ['llama.cpp', 'Qwen3', 'GPU tuning', 'Docker Compose', 'Nginx']
+    tags: ['llama.cpp', 'GPU tuning', 'Docker Compose', 'Nginx']
   },
   {
     slug: 'telegram-bot',

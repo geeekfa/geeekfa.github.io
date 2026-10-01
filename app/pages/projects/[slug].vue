@@ -109,6 +109,18 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       tabs: m.fsTireInventoryTabs,
       finaleLine: m.finaleLine
     }
+  },
+  'llm-server': async () => {
+    const m = await import('~/data/projects/llm-server')
+    return {
+      kind: 'features',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      features: m.llmServerFeatures,
+      gallery: [],
+      storeLinks: [],
+      finaleLine: m.finaleLine
+    }
   }
 }
 
