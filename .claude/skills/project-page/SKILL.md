@@ -23,42 +23,25 @@ explicitly: a wrong guess here costs him a review cycle, a question doesn't.
   basics (one-line summary, skill category, tech tags) before continuing —
   don't invent them.
 
-## 1. One-time setup check — generalize the page if this is project #2+
+## 1. Setup — already done, just add to the registry
 
-[slug].vue currently **hardcodes Tire Studio**: it imports `tireStudioTabs`
-directly from `~/data/tire-studio`, and its `whyPoints` array and finale
-copy/dot-count are written inline for Tire Studio specifically. The first
-time you build a *second* project's page, refactor this to be generic
-**before** writing new content:
+This used to be a one-time refactor; it's done (as of the BTS Notes page).
+[slug].vue now reads content through a slug-keyed registry in
+`contentRegistry` and supports **two content shapes**, picked per project:
 
-1. Create `app/data/projects/` (plural, new folder) and move
-   `app/data/tire-studio.ts` into it as `app/data/projects/tire-studio.ts`
-   with no content changes.
-2. Give every project's data module the same shape — reuse the existing
-   `StudioStep`/`StudioTab` interfaces, and additionally export `whyPoints`
-   (3 cards) and `finaleLine` (the closing pull-quote, as a string array of
-   line-break segments) from each project's module, instead of leaving them
-   inline in the page component.
-3. In `[slug].vue`, replace the hardcoded `tireStudioTabs`/`whyPoints`
-   imports with a small registry: a `Record<string, () => Promise<...>>` (or
-   a plain `Record<string, { tabs, whyPoints, finaleLine }>` if dynamic
-   import feels like overkill for how few projects there are — YAGNI, pick
-   whichever is less code for 2–3 projects) keyed by slug, and look up the
-   current project's content via `route.params.slug`.
-4. A slug with **no** registry entry should render the existing
-   "Project not found" fallback — not a crash. (This also means a
-   `projects.ts` entry can exist before its detail page does, same as it
-   does today for every project except Tire Studio.)
-5. The finale's dot row currently does `v-for="t in tireStudioTabs"` — make
-   it iterate the current project's own `tabs` so the dot count always
-   matches that project's real stage count (3 stages → 3 dots, not a
-   hardcoded 5).
-6. Verify Tire Studio's page still renders byte-identical after the
-   refactor before writing a single word of new content. This is a
-   mechanical reshuffle, not a redesign — don't improve anything else while
-   you're in there.
+- `kind: 'pipeline'` — Tire Studio's shape: `heroImage`, `whyPoints`,
+  `introLine`, `tabs` (stage carousels), `finaleLine`.
+- `kind: 'features'` — BTS Notes' shape: `heroImage`, `whyPoints`,
+  `features` (icon + title + 1–2 sentence bullets), `gallery` (screenshots),
+  `storeLinks` (optional — see §7), `finaleLine`.
 
-Skip this whole section once it's done once.
+For a new project: create `app/data/projects/<slug>.ts` exporting the shape
+that fits (see §4 for how to decide which), add one entry to
+`contentRegistry` in `[slug].vue` that dynamically imports it, and add the
+project to [app/data/projects.ts](../../../app/data/projects.ts) if it
+isn't there yet. Don't touch the shared types/layout unless the new
+project genuinely needs a feature neither shape has — extend generically
+(a new optional field, not a project-specific `if (slug === ...)` branch).
 
 ## 2. Research — read before you write
 
@@ -77,6 +60,13 @@ notes file, not page copy.
    Claude Code) maintains. This is where the real technical substance comes
    from: measured bugs, rejected alternatives, locked design decisions,
    actual algorithm choices.
+2b. **Check for a sibling backend/API project.** Several of Salman's
+   products are frontend-plus-backend pairs living in separate repos (e.g.
+   BTS Notes' Flutter app + a separate `conversation-api` FastAPI backend).
+   If the frontend talks to a custom API, ask Salman where that backend
+   lives, read its `requirements.txt`/`package.json`/`.claude/CLAUDE.md`
+   too, and fold its real tech stack into the page's tags — don't let the
+   tech stack only reflect the client you happened to start reading.
 3. **Cross-check against the resume project's research doc**, if one
    exists: `/Users/geeekfa/Development/Projects/resume/docs/research/`
    (filenames like `NN-project-<name>-fa.md`). That file is a good
@@ -115,7 +105,7 @@ their sub-steps were written up. Pattern that worked:
 4. Repeat per section until every section of the product is confirmed and
    researched.
 
-## 4. Scope the page — don't document the whole app
+## 4. Scope the page — and pick the right shape
 
 Mirror Tire Studio's choice: the page covers **one coherent pipeline/flow**
 through the product (the thing that's actually demo-worthy), not every
@@ -124,6 +114,16 @@ screen or admin feature the software has. If the product has side features
 demo-worthy flow, leave them out entirely — at most one closing sentence
 ("and handles X, Y behind the scenes"), never their own section. If it's
 unclear what the "core flow" even is for this product, ask Salman.
+
+**Don't assume `kind: 'pipeline'` by default.** Tire Studio is a literal
+pipeline (five ordered stages transforming an input into an output) — that
+shape fits it naturally. Most products are not pipelines; BTS Notes is a
+bag of unrelated features used by many departments, so Salman explicitly
+asked for `kind: 'features'` instead (bullet list + screenshot gallery, no
+forced stage ordering). Before writing anything, ask Salman which shape
+fits, or state your read of it and confirm — same as confirming section
+structure in §3. Don't force a non-sequential product into a fake
+5-stage pipeline just to reuse the carousel component.
 
 ## 5. Write the copy — the hard-won rules
 
@@ -140,9 +140,22 @@ building Tire Studio. Apply all of them from the start this time.
   paragraph per step — that was tried, Salman cut it entirely ("we're not
   teaching anyone how our software works"). Don't reintroduce one.
 - **"Why this exists" is 3 short colored cards** (problem → cost of the
-  honest/manual fix → what you built instead), each 2–3 sentences, punchy,
-  ad-copy tone — not engineering prose. This is the only place the page
-  argues the *business* case; keep it there, don't repeat it elsewhere.
+  traditional/manual fix → what you built instead), each 2–3 sentences,
+  punchy, ad-copy tone — not engineering prose. This is the only place the
+  page argues the *business* case; keep it there, don't repeat it
+  elsewhere. **The middle card's title is always "The traditional fix"**
+  (shared verbatim across every project, Salman's call — short and reusable
+  beats a bespoke title per project). Only the body text changes per
+  project.
+- **Write like an ordinary person, not an AI.** Before showing any page
+  copy, read it back and ask: would someone with plain, everyday English
+  actually write this sentence? Concretely: **no em dashes anywhere** — one
+  slipped through on both Tire Studio and BTS Notes and Salman caught it
+  immediately both times, calling it an obvious AI tell. Use periods or
+  commas, or just split into two sentences. Also avoid overly smooth,
+  symmetrical "ad copy" rhythm when a plainer sentence would do. This
+  applies to every piece of user-facing text on the page: hero summary,
+  why-cards, feature bullets, captions, the closing line — all of it.
 - **No stats/numbers section as a closer.** Tried once, rejected: real
   timelines are messy (a project worked on, on and off, over a year reads
   as "8 weeks" in a commit-count stat, which is misleading) and Salman does
@@ -161,6 +174,17 @@ building Tire Studio. Apply all of them from the start this time.
   research phase didn't turn up a genuine war-story for a given step, the
   step just gets its one-line purpose and nothing else — a plain step is
   fine, a fabricated anecdote is not.
+- **Do a dedicated honesty pass after writing all the copy, not just while
+  writing it.** On the BTS Notes page this caught two real mistakes after
+  everything already "read fine": an invented department name ("warranty")
+  that didn't exist in any screenshot, code, or doc — a plausible-sounding
+  but fabricated example slipped in while writing a list; and a feature
+  bullet that overclaimed automatic background sync when the real behavior
+  is a manual tap on a badge. The fix: after a full draft, go back through
+  every concrete claim (names, numbers, "automatically", specific nouns)
+  and re-verify each one against the actual code/screenshots rather than
+  trusting that it "sounds right." Do this as its own pass, separate from
+  the simplify-the-prose pass — they catch different kinds of errors.
 
 ## 6. Build the page
 
@@ -212,33 +236,73 @@ Reuse, don't reinvent — the patterns below are already built and working:
 ## 7. Images
 
 - **Placeholders first, so the page builds immediately.** Generate a
-  simple labeled SVG placeholder per step image slot (dark rect + centered
-  text naming the slot) so Salman can see the real layout before any real
-  screenshot exists. Put them at
-  `public/images/<slug>/<step-id>.svg`.
-- **Tell Salman the exact file list and naming convention up front** —
-  one message with every expected filename (matching the step `id`s you're
-  about to write into the data file), so he can drop in real images
-  incrementally without asking you each time. He will paste file paths
-  into chat as he captures them — when he does, swap that one step's
-  `image` field from the placeholder extension to the real one
-  (`.png`/`.jpg`, whatever he actually saved) and delete nothing he didn't
-  ask you to delete.
-- **A step can legitimately have no image** (ask Salman rather than
-  stalling if he doesn't have one for some step) — `StudioStep.image` is
-  optional; leave it unset and the carousel component falls back
-  automatically (see §6). Don't block the rest of the page on one missing
-  screenshot.
+  simple labeled SVG placeholder per image slot (dark rect + centered text
+  naming the slot) so Salman can see the real layout before any real
+  screenshot exists.
+- **For a `pipeline` page**: placeholders go at
+  `public/images/<slug>/<step-id>.svg`, one per step `id` you're about to
+  write into the data file. Tell Salman the exact file list and naming
+  convention up front — one message with every expected filename — so he
+  can drop in real images incrementally without asking you each time. When
+  he pastes a file path in chat, swap that one step's `image` field from
+  the placeholder extension to the real one (`.png`/`.jpg`, whatever he
+  actually saved) and delete nothing he didn't ask you to delete. A step
+  can legitimately have no image (ask rather than stalling) —
+  `StudioStep.image` is optional and the carousel falls back gracefully.
+- **For a `features` page's gallery, use numbered auto-discovery instead
+  of named slots** (built for BTS Notes, reuse as-is): images live in
+  `public/images/<slug>/` named `1.png`, `2.png`, `3.png`... with no fixed
+  mapping to a specific feature. A generator function in `nuxt.config.ts`
+  (`generateBtsNotesGalleryManifest` — copy the pattern, parameterize by
+  slug for a new project rather than hardcoding another one inline) scans
+  that folder on every dev-server start and before each build/generate, and
+  writes the numerically-sorted filename list to
+  `app/data/.generated/<slug>-gallery.json`, which the project's data
+  module imports and maps into `GalleryImage[]`. Salman just drops
+  `N.png` files into the folder named in whatever order he captured them;
+  nothing else needs to change. **Why not `import.meta.glob` on
+  `public/`:** Vite doesn't include the `public/` folder in its module
+  graph (it's copied as-is), so glob imports can't see files there — this
+  is why the manifest-generator approach exists instead. Add an optional
+  caption per screenshot in a `galleryCaptions` lookup (keyed by filename
+  without extension) once you've actually looked at that screenshot —
+  never caption one sight unseen.
 - **Hero image**: ask Salman whether he wants to build it himself (he has
   done this in Photoshop before — if asked, tell him canvas size
   `1920×1080` / 16:9, transparent background works well since the hero
-  panel itself is dark) or wants you to build a simple labeled SVG
-  input→output diagram as a placeholder. Either way, the hero `q-img` uses
-  `fit="contain"` so it's never cropped regardless of the image's own
-  aspect ratio.
+  panel itself is dark) or wants an AI image generator prompt from you. If
+  he wants a prompt, default to the same style as Tire Studio's and BTS
+  Notes' heroes — a flat vector "INPUT → OUTPUT" (or equivalent
+  before/after) diagram on the site's dark navy background, using that
+  project's own skill-accent color (`--pf-mobile`, `--pf-ai`, etc. from
+  [theme.scss](../../../app/assets/css/theme.scss)) for highlights — unless
+  the product's actual pitch calls for a different visual metaphor. Give a
+  fully-detailed prompt (background color, layout, labels, style, what to
+  avoid) rather than a vague one-liner; he pastes it into whatever image
+  tool he's using and brings back the result. Either way, the hero `q-img`
+  uses `fit="contain"` so it's never cropped regardless of the image's own
+  aspect ratio. Placeholder in the meantime: a labeled SVG at
+  `public/images/<slug>/hero.svg`, referenced via each project's own
+  `heroImage` export (not a hardcoded `.png` extension in `[slug].vue`) so
+  swapping to the real file later is a one-line change in that project's
+  data module.
 - Never resize, re-crop, or otherwise "fix" an image Salman provides —
-  the carousel and hero are both built to handle whatever he gives them via
-  `fit="contain"`.
+  the carousel, gallery, and hero are all built to handle whatever he
+  gives them via `fit="contain"`.
+
+## 7b. Proof it's real (optional, ask first)
+
+If the product is publicly downloadable (App Store, Google Play, a public
+URL) even though it's gated behind a login, ask Salman whether he wants
+those links on the page — it's a strong, free signal to a recruiter that
+this shipped and is in real use, not a demo. **Never guess or construct the
+URL yourself**; ask Salman to paste the exact link. Label the section
+something that can't be misread as "download and use this" (a real past
+mistake: "Get the app" reads like an invitation, even though the app needs
+company credentials — "Live on the app stores" was the fix). This is
+already wired up generically on `FeatureListContent.storeLinks` in
+`[slug].vue` — add a `storeLinks` export to the new project's data module
+with real URLs, don't rebuild the UI for it.
 
 ## 8. Verify, then ship — every meaningful change, not just at the end
 
@@ -251,6 +315,10 @@ This project ships continuously, not in one big reveal:
    that assumes a dark background (white arrows, white text) — this has
    broken before (carousel arrows invisible in light mode).
 3. Check mobile width (375px) for horizontal scroll or awkward wrapping.
+3b. Before the final ship, do the honesty pass and the human-sounding-copy
+   pass from §5 as their own explicit step, not folded into "writing the
+   copy" — both caught real mistakes after the page already looked
+   finished on BTS Notes.
 4. `git add` the specific files you changed (never a blanket `-A` without
    checking `git status` first), commit with a clear message explaining
    *why*, and `git push` — immediately, not batched at the end of the
