@@ -10,5 +10,7 @@ export const techLinks: Record<string, string> = {
   FastAPI: 'https://fastapi.tiangolo.com',
   PostgreSQL: 'https://www.postgresql.org',
   Redis: 'https://redis.io',
-  Celery: 'https://docs.celeryq.dev'
+  Celery: 'https://docs.celeryq.dev',
+  MySQL: 'https://www.mysql.com',
+  OpenAI: 'https://openai.com'
 }

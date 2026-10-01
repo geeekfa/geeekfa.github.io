@@ -36,7 +36,20 @@ export const projects: Project[] = [
     summary:
       'One Flutter app every department uses to record their work: sales, HR, regional managers, and more. Each team gets its own questions, built from a database instead of hardcoded screens.',
     skill: 'mobile',
-    tags: ['Flutter', 'Dart', 'iOS', 'Android', 'sqflite', 'Offline sync', 'Barcode scanning']
+    tags: [
+      'Flutter',
+      'Dart',
+      'iOS',
+      'Android',
+      'FastAPI',
+      'Python',
+      'OpenAI',
+      'MySQL',
+      'SQL Server',
+      'Redis',
+      'Offline sync',
+      'Barcode scanning'
+    ]
   },
   {
     slug: 'bts-ai',
