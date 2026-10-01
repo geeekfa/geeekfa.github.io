@@ -120,6 +120,6 @@ export const storeLinks = [
   }
 ]
 
-export const finaleLine = ['Every department talks.', 'One app listens.']
+export const finaleLine = ['One app for every team.', 'Real data instead of paperwork.']
 
 export const heroImage = '/images/bts-notes/hero.svg'
