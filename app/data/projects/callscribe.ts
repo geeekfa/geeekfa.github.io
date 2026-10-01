@@ -66,10 +66,25 @@ export const callscribeTabs: StudioTab[] = [
     ]
   },
   {
+    id: 'terms',
+    label: 'Fix industry terms',
+    icon: 'spellcheck',
+    accent: 'var(--pf-web)',
+    summary: 'Cleans up the numbers the speech model tends to get wrong, like tire sizes read out loud.',
+    steps: [
+      {
+        id: 'numbers',
+        label: 'Correct the numbers',
+        icon: 'spellcheck',
+        text: 'A tire size like "215/55R18" said out loud often gets written down as a dollar amount instead. This step catches that and fixes it, without touching anything else in the transcript.'
+      }
+    ]
+  },
+  {
     id: 'speakers',
     label: 'Tell speakers apart',
     icon: 'forum',
-    accent: 'var(--pf-web)',
+    accent: 'var(--pf-mobile)',
     summary: 'Figures out which lines belong to which person on the call.',
     steps: [
       {
@@ -84,7 +99,7 @@ export const callscribeTabs: StudioTab[] = [
     id: 'roles',
     label: 'Label roles',
     icon: 'badge',
-    accent: 'var(--pf-mobile)',
+    accent: 'var(--pf-infra)',
     summary: 'Works out who on the call is our agent and who is the customer, or if it wasn\'t even a real conversation.',
     steps: [
       {
@@ -100,7 +115,7 @@ export const callscribeTabs: StudioTab[] = [
     id: 'quality',
     label: 'Score the call',
     icon: 'grading',
-    accent: 'var(--pf-infra)',
+    accent: 'var(--pf-ai)',
     summary: 'Reads the finished transcript and grades how the agent actually handled the call.',
     steps: [
       {
@@ -116,7 +131,7 @@ export const callscribeTabs: StudioTab[] = [
     id: 'review',
     label: 'Review the results',
     icon: 'tab',
-    accent: 'var(--pf-ai)',
+    accent: 'var(--pf-backend)',
     summary: 'The finished result is a web page anyone can read, not a raw file someone has to dig through.',
     steps: [
       {
