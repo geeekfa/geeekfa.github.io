@@ -91,7 +91,13 @@ export interface GalleryImage {
 // when a screenshot needs explaining.
 const galleryCaptions: Record<string, string> = {
   '1': 'The home screen. Every tile is a category pulled from the database.',
-  '2': 'Picking the customer for a visit. Nearby stores ranked by live GPS distance.'
+  '2': 'Picking the customer for a visit. Nearby stores ranked by live GPS distance.',
+  '3': 'Leaving a voice note after a visit, just by talking.',
+  '4': 'Attaching photos or files right from the question.',
+  '5': 'Sharing a note with specific coworkers.',
+  '6': 'Setting a follow-up date and time.',
+  '7': 'A quick yes or no question, this one about a year-end award.',
+  '8': 'Getting a signature from both sides before moving on.'
 }
 
 const galleryFiles = galleryManifest as string[]
