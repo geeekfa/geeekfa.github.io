@@ -72,6 +72,15 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       Salman's choice. Icons picked by hand since there's no frontend to
       pull step icons from. Hero is a placeholder SVG. See
       `docs/projects/fs-tire-inventory.md`.
+- [x] LLM Server project detail page — features shape, no gallery and no
+      images at all besides a placeholder hero (text-only project, Salman's
+      choice: he wants it on the site to show he can stand up a self-hosted
+      AI server, not to show off a specific product). 5 short feature
+      bullets (own model, OpenAI-compatible API, Docker packaging, GPU
+      tuning, Nginx reverse proxy). No specific model name anywhere in the
+      copy, per Salman's explicit request. The project's own docs mentioned
+      a "Hermes Agent" client that talks to this server; left out entirely,
+      also per Salman's request.
 
 ## Backlog
 
