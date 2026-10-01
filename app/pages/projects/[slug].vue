@@ -64,6 +64,18 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       storeLinks: m.storeLinks,
       finaleLine: m.finaleLine
     }
+  },
+  'agm-office': async () => {
+    const m = await import('~/data/projects/agm-office')
+    return {
+      kind: 'features',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      features: m.agmOfficeFeatures,
+      gallery: [],
+      storeLinks: [],
+      finaleLine: m.finaleLine
+    }
   }
 }
 

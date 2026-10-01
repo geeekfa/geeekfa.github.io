@@ -30,6 +30,15 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       generates a real one; gallery is empty until he drops screenshots into
       `public/images/bts-ai/` (needs a privacy check first, internal tool
       with real customer data). See `docs/projects/bts-ai.md`.
+- [x] AGM Office project detail page — features shape, no gallery or store
+      links (internal tool, no screenshots available and Salman wants to
+      keep it that way). 9 feature bullets covering project status history,
+      the accounting lock (with the real bug Salman found and fixed), bulk
+      order billing split, permissions, audit logging, clients/vendors/
+      credit cards, scheduling, order sync, and the self-imposed "no AI
+      writes to production DB" rule. Tags credit Salman for the Nuxt/Vue
+      frontend only, not the PHP backend (built by someone else). Hero is a
+      placeholder SVG. See `docs/projects/agm-office.md`.
 
 ## Backlog
 

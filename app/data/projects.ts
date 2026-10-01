@@ -81,7 +81,7 @@ export const projects: Project[] = [
     summary:
       'Project-management tool for a promotional products company, covering cost tracking, approval and billing, with role-based access.',
     skill: 'web',
-    tags: ['Nuxt.js', 'Vue', 'PHP', 'SQL Server', 'Monday.com API']
+    tags: ['Nuxt.js', 'Vue 2', 'BootstrapVue', 'Vuex', 'Monday.com API']
   },
   {
     slug: 'callscribe',
