@@ -86,6 +86,14 @@ const featureList = computed(() => (content.value?.kind === 'features' ? content
 const finaleDotColors = computed(() =>
   pipeline.value ? pipeline.value.tabs.map((t) => t.accent) : featureList.value ? ['var(--pf-ai)', 'var(--pf-backend)', 'var(--pf-web)', 'var(--pf-mobile)', 'var(--pf-infra)'] : []
 )
+
+const lightboxImage = ref<GalleryImage>()
+const lightboxOpen = computed({
+  get: () => !!lightboxImage.value,
+  set: (v: boolean) => {
+    if (!v) lightboxImage.value = undefined
+  }
+})
 </script>
 
 <template>
@@ -161,11 +169,18 @@ const finaleDotColors = computed(() =>
         <div class="text-h5 text-weight-bold q-mb-lg">Screenshots</div>
         <div class="pf-gallery">
           <figure v-for="g in featureList.gallery" :key="g.id" class="pf-gallery__item">
-            <q-img :src="g.image" fit="contain" class="pf-gallery__img" />
+            <q-img :src="g.image" fit="contain" class="pf-gallery__img pf-gallery__img--clickable" @click="lightboxImage = g" />
             <figcaption v-if="g.caption" class="pf-gallery__caption">{{ g.caption }}</figcaption>
           </figure>
         </div>
       </section>
+
+      <ImageLightbox
+        v-if="lightboxImage"
+        v-model="lightboxOpen"
+        :src="lightboxImage.image"
+        :caption="lightboxImage.caption"
+      />
     </template>
 
     <section class="pf-container q-py-xl">
@@ -367,6 +382,10 @@ const finaleDotColors = computed(() =>
     border-radius: var(--pf-radius-card);
     max-height: 420px;
     background: var(--pf-surface);
+
+    &--clickable {
+      cursor: zoom-in;
+    }
   }
 
   &__caption {
