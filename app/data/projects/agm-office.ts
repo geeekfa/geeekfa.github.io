@@ -88,4 +88,4 @@ export const finaleLine = [
   'Three years in, and it still runs the whole company\'s workflow.'
 ]
 
-export const heroImage = '/images/agm-office/hero.svg'
+export const heroImage = '/images/agm-office/hero.png'
