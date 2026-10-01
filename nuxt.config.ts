@@ -28,13 +28,29 @@ function generateGalleryManifest(slug: string) {
   fs.writeFileSync(outFile, JSON.stringify(images, null, 2) + '\n')
 }
 
-generateGalleryManifest('bts-notes')
-generateGalleryManifest('bts-ai')
+const GALLERY_SLUGS = ['bts-notes', 'bts-ai']
+
+function generateAllGalleryManifests() {
+  for (const slug of GALLERY_SLUGS) generateGalleryManifest(slug)
+}
+
+generateAllGalleryManifests()
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+
+  hooks: {
+    // Re-scan public/images/<slug>/ whenever a file changes there, so dropping a new
+    // screenshot shows up with a plain page refresh instead of needing a dev-server restart.
+    'builder:watch': (event, relativePath) => {
+      const normalized = relativePath.replace(/\\/g, '/')
+      if (GALLERY_SLUGS.some((slug) => normalized.startsWith(`public/images/${slug}/`))) {
+        generateAllGalleryManifests()
+      }
+    }
+  },
 
   ssr: false,
   app: {

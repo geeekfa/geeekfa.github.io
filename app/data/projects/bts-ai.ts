@@ -76,7 +76,9 @@ export interface GalleryImage {
 // Salman drops screenshots into public/images/bts-ai/ named 1, 2, 3... (see the manifest
 // generator in nuxt.config.ts). Add a caption here once a screenshot has actually been reviewed
 // for any visible customer data (internal tool, real company data, needs a privacy check first).
-const galleryCaptions: Record<string, string> = {}
+const galleryCaptions: Record<string, string> = {
+  '1': 'Document Central answering a pricing question, with the tier table and the source PDF attached.'
+}
 
 const galleryFiles = galleryManifest as string[]
 
