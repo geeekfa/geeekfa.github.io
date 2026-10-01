@@ -23,6 +23,7 @@ interface FeatureListContent {
   whyPoints: WhyPoint[]
   features: Feature[]
   gallery: GalleryImage[]
+  storeLinks: { label: string; url: string; icon: string }[]
   finaleLine: string[]
 }
 
@@ -48,6 +49,7 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       whyPoints: m.whyPoints,
       features: m.btsNotesFeatures,
       gallery: m.btsNotesGallery,
+      storeLinks: m.storeLinks,
       finaleLine: m.finaleLine
     }
   }
@@ -167,6 +169,23 @@ const finaleDotColors = computed(() =>
           :label="t"
           :icon-right="techLinks[t] ? 'open_in_new' : undefined"
           @click="techLinks[t] && navigateTo(techLinks[t], { external: true, open: { target: '_blank' } })"
+        />
+      </div>
+    </section>
+
+    <section v-if="featureList?.storeLinks.length" class="pf-container q-pb-xl">
+      <div class="text-h5 text-weight-bold q-mb-md">Get the app</div>
+      <div class="row q-gutter-sm">
+        <q-btn
+          v-for="s in featureList.storeLinks"
+          :key="s.url"
+          outline
+          no-caps
+          class="pf-btn"
+          :icon="s.icon"
+          :label="s.label"
+          icon-right="open_in_new"
+          @click="navigateTo(s.url, { external: true, open: { target: '_blank' } })"
         />
       </div>
     </section>

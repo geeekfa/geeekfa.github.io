@@ -101,6 +101,19 @@ export const btsNotesGallery: GalleryImage[] = galleryFiles.map((filename) => {
   return { id, image: `/images/bts-notes/${filename}`, caption: galleryCaptions[id] }
 })
 
+export const storeLinks = [
+  {
+    label: 'App Store',
+    url: 'https://apps.apple.com/us/app/bts-notes/id6741952498',
+    icon: 'phone_iphone'
+  },
+  {
+    label: 'Google Play',
+    url: 'https://play.google.com/store/apps/details?id=com.fardsystems.btsnts',
+    icon: 'android'
+  }
+]
+
 export const finaleLine = ['Every department talks.', 'One app listens.']
 
 export const heroImage = '/images/bts-notes/hero.svg'
