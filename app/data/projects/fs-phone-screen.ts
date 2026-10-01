@@ -23,7 +23,7 @@ export const whyPoints = [
 
 export const finaleLine = ['The phone rings.', 'The customer\'s page is already on screen.']
 
-export const heroImage = '/images/fs-phone-screen/hero.svg'
+export const heroImage = '/images/fs-phone-screen/hero.png'
 
 export const introLine = 'A phone call turns into an open browser tab in about a second. Each stage hands off to the next.'
 
