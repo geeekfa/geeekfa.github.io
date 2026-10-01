@@ -72,12 +72,15 @@ Source: `.claude/CLAUDE.md` architecture section (`AIQuestionOperationType`, `op
 ## Screenshots
 
 Page shape: no per-bullet images (just icon + title + 1-2 sentences), one shared gallery
-section below the bullets instead. Add more entries to `btsNotesGallery` in
-`app/data/projects/bts-notes.ts` as Salman sends screenshots — filename and caption are
-free-form, no fixed naming convention needed since there's no 1:1 slot mapping.
+section below the bullets instead. Salman drops screenshots straight into
+`public/images/bts-notes/` named `1.png`, `2.png`, `3.png`... — `nuxt.config.ts` scans that
+folder (on every dev-server start and before each build/generate) and writes the sorted file
+list to `app/data/.generated/bts-notes-gallery.json`, which `bts-notes.ts` reads to build
+`btsNotesGallery`. No code change needed per screenshot; add a line to `galleryCaptions` in
+`bts-notes.ts` (keyed by filename without extension) only when a shot needs explaining.
 
-- `public/images/bts-notes/data-driven.png` — real: home screen, category grid (Salman
-  dropped this in directly during the build).
+- `public/images/bts-notes/1.png` — real: home screen, category grid.
+- `public/images/bts-notes/2.png` — real: nearby-customer picker (GPS-ranked list).
 - `public/images/bts-notes/hero.svg` — placeholder, needs a real hero image or diagram.
 
 ## Honesty checks
