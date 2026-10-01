@@ -14,21 +14,28 @@ Hero → Why this exists (3 cards, same format as Tire Studio) → a bullet-poin
 (icon + title + 1-2 sentence description each, no stage carousels) → a screenshot gallery →
 Tech stack → closing pull-quote + CTA.
 
-## Why this exists (3 cards)
+## Why this exists (3 cards) — revised per Salman's feedback (2026-09-30)
 
-1. **The problem** — field reps visiting stores had no consistent way to record what
-  happened. Notes lived in texts, memory, or scattered paper — nothing a manager could
-  search or compare.
-2. **The honest fix costs too much** — a fixed, hard-coded survey screen means every new
-  question is a new app release (store review, rollout, waiting for everyone to update).
-  Different departments (sales, HR, regional managers...) also need completely different
-  question sets.
-3. **What I built instead** — a conversation engine where the entire question flow — what's
-  asked, in what order, what kind of answer it expects — lives in the database. New
-  questions, new branches, whole new categories ship without touching the app.
+First draft scoped "the problem" to field reps only — Salman corrected this: it's every
+department (confirmed by the real category screenshot: Commercial Sales, Territory Sales
+Managers, HR Notes, Regional Managers, e-Tickets, SEMA/Vegas Notes, Garage Vision...), it used
+to run on paper forms specifically (not just "texts and memory"), and "what I built instead"
+was missing the AI-analysis/reporting payoff (confirmed in scope by Salman earlier — the
+*mobile app's* job is still only collection, but this card can honestly say the structured
+data is what makes downstream AI analysis/reporting possible).
+
+1. **The problem** — every department tracked their work however they could: paper forms,
+  texts, or memory. None of it could be searched, compared, or trusted.
+2. **The honest fix costs too much** — it all used to run on paper. Most got lost, ignored,
+  or never looked at twice, and even surviving forms needed manual re-entry before anyone
+  could study them.
+3. **What I built instead** — one engine, every department gets its own question flow from a
+  database instead of hardcoded screens, and because every answer is structured from the
+  start it feeds straight into AI-powered analysis and reporting (BTS AI, the next project)
+  instead of a filing cabinet.
 
 Source: `.claude/CLAUDE.md` architecture section (`AIQuestionOperationType`, `operationToRoute`),
-`app_router.dart`.
+`app_router.dart`, and screenshot 1 (home screen category grid) for the department list.
 
 ## The 8 feature bullets
 

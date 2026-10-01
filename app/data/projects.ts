@@ -34,7 +34,7 @@ export const projects: Project[] = [
     slug: 'bts-notes',
     name: 'BTS Notes',
     summary:
-      'Flutter app field reps use to log store visits, even offline. The questions come from the database, so the flow changes without an app release.',
+      'One Flutter app every department uses to record their work — sales, HR, warranty, and more — each with its own questions, built from a database instead of hardcoded screens.',
     skill: 'mobile',
     tags: ['Flutter', 'Dart', 'iOS', 'Android', 'sqflite', 'Offline sync', 'Barcode scanning']
   },

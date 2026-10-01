@@ -5,19 +5,19 @@ export const whyPoints = [
     icon: 'help_outline',
     color: 'var(--pf-infra)',
     title: 'The problem',
-    text: 'Field reps visiting stores had no consistent way to record what happened. Notes lived in texts, memory, or scattered paper — nothing a manager could search or compare.'
+    text: 'Every department — field sales, HR, regional managers, warranty, and more — tracked their work however they could: paper forms, text messages, or just memory. None of it could be searched, compared, or trusted.'
   },
   {
     icon: 'schedule',
     color: 'var(--pf-mobile)',
     title: 'The honest fix costs too much',
-    text: 'A fixed survey screen means every new question is a new app release — store review, rollout, waiting for everyone to update. Different departments also need completely different questions.'
+    text: 'All of it used to run on paper forms. Most got lost, ignored, or never looked at twice. And the forms that did survive still had to be retyped into a computer by hand before anyone could study them — hours or days of work, every time, just to ask one question of the data.'
   },
   {
     icon: 'bolt',
     color: 'var(--pf-ai)',
     title: 'What I built instead',
-    text: 'A conversation engine where the entire question flow lives in the database. New questions, new branches, whole new categories ship without touching the app.'
+    text: 'One app, one engine — every department gets its own questions and flow, chosen from a database instead of hardcoded into the app. And because every answer is structured data from the moment it\'s typed, it feeds straight into AI-powered analysis and reporting instead of a filing cabinet.'
   }
 ]
 
@@ -33,49 +33,49 @@ export const btsNotesFeatures: Feature[] = [
     id: 'data-driven',
     icon: 'dynamic_form',
     title: 'One app, every department',
-    text: 'The questions a user sees come straight from the database, not the app\'s code. Adding a new question, or a whole new kind of visit, usually just means adding data — no app release.'
+    text: 'Sales, HR, regional managers, warranty — each team gets its own questions and flow, powered by the same app. No new release needed to change what\'s asked.'
   },
   {
     id: 'answer-types',
     icon: 'checklist',
-    title: 'Many kinds of answers, one engine',
-    text: 'Text, numbers, yes/no, dates, photos, a signature pad, a voice recording or typed note, even a nearby-customer picker using live GPS — all built on the same question engine.'
+    title: 'Whatever the moment calls for',
+    text: 'Type, talk, snap a photo, sign your name, or just tap yes or no — the app adapts to the question instead of forcing everything into one text box.'
   },
   {
     id: 'branching',
     icon: 'alt_route',
-    title: 'Branching flows',
-    text: 'Some questions change what comes next based on the answer, so one category can lead down completely different paths instead of a single fixed script.'
+    title: 'Smart enough to skip ahead',
+    text: 'The next question depends on the last answer, so nobody wastes time on questions that don\'t apply to them.'
   },
   {
     id: 'review',
     icon: 'fact_check',
-    title: 'Review before you send',
-    text: 'The finished conversation shows up as a chat. Tap any bubble to reopen and fix that answer before the whole thing goes out.'
+    title: 'Catch mistakes before they\'re sent',
+    text: 'Everything shows up as a simple chat you can scroll back through — tap any answer to fix it before submitting.'
   },
   {
     id: 'resume',
     icon: 'history',
-    title: 'Pick up where you left off',
-    text: 'Close the app mid-conversation and it\'s saved as incomplete. Come back later and resume right where you stopped, instead of starting over.'
+    title: 'Pick up right where you left off',
+    text: 'Get pulled away mid-form? Come back later and it\'s still waiting, exactly where you stopped.'
   },
   {
     id: 'offline-sync',
     icon: 'cloud_sync',
-    title: 'Offline-first, simple sync',
-    text: 'The app works with no connection at all — answers save to the phone first. A badge shows what\'s still waiting to go out, and a tap pushes it once you\'re back online.'
+    title: 'Works with zero signal',
+    text: 'No internet, no problem — everything saves on the phone and quietly syncs the moment you\'re back online.'
   },
   {
     id: 'etrack',
     icon: 'qr_code_scanner',
-    title: 'eTrack: scan without looking at the screen',
-    text: 'A built-in feature for logging incoming packages — continuous barcode scanning with color and sound feedback, then batch photo capture, so an operator never has to stop and stare at the phone.'
+    title: 'Scan a package without breaking stride',
+    text: 'A built-in mode for incoming packages: scan the barcode, hear a tone, keep moving — no screen-watching required.'
   },
   {
     id: 'cross-platform',
     icon: 'devices',
-    title: 'Everywhere the reps are',
-    text: 'iOS and Android are the real targets, but Windows, macOS, Linux and web builds all exist too.'
+    title: 'iPhone, Android, and beyond',
+    text: 'Built for the phones people actually carry, with Windows, Mac, Linux and web versions too.'
   }
 ]
 
@@ -101,6 +101,6 @@ export const btsNotesGallery: GalleryImage[] = galleryFiles.map((filename) => {
   return { id, image: `/images/bts-notes/${filename}`, caption: galleryCaptions[id] }
 })
 
-export const finaleLine = ['Field reps talk.', 'The database listens.']
+export const finaleLine = ['Every department talks.', 'One app listens.']
 
 export const heroImage = '/images/bts-notes/hero.svg'
