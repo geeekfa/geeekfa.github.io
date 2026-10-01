@@ -83,13 +83,25 @@ export interface GalleryImage {
   caption?: string
 }
 
-export const btsNotesGallery: GalleryImage[] = [
-  {
-    id: 'home-categories',
-    image: '/images/bts-notes/data-driven.png',
-    caption: 'The home screen — every tile is a category pulled from the database.'
-  }
-]
+// Captions keyed by filename (without extension) — Salman just drops screenshots into
+// app/assets/images/bts-notes/ named 1, 2, 3... and every file there shows up automatically,
+// in numeric filename order. Add a caption here when a screenshot needs explaining.
+const galleryCaptions: Record<string, string> = {
+  '1': 'The home screen — every tile is a category pulled from the database.',
+  '2': 'Picking the customer for a visit — nearby stores ranked by live GPS distance.'
+}
+
+const galleryModules = import.meta.glob('~/assets/images/bts-notes/*.{png,jpg,jpeg,webp}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>
+
+export const btsNotesGallery: GalleryImage[] = Object.entries(galleryModules)
+  .map(([path, image]) => {
+    const id = path.split('/').pop()!.replace(/\.[^.]+$/, '')
+    return { id, image, caption: galleryCaptions[id] }
+  })
+  .sort((a, b) => Number(a.id) - Number(b.id))
 
 export const finaleLine = ['Field reps talk.', 'The database listens.']
 
