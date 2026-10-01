@@ -60,7 +60,7 @@ export const callscribeTabs: StudioTab[] = [
         id: 'whisper',
         label: 'Speech to text',
         icon: 'graphic_eq',
-        image: '/images/callscribe/transcribe.svg',
+        image: '/images/callscribe/transcribe.png',
         text: 'Runs the call through a local speech-to-text model so every word gets written down, no audio ever leaves our machines.'
       }
     ]
@@ -91,7 +91,7 @@ export const callscribeTabs: StudioTab[] = [
         id: 'label',
         label: 'Assign a role',
         icon: 'badge',
-        image: '/images/callscribe/roles.svg',
+        image: '/images/callscribe/roles.png',
         text: 'Marks each speaker as the agent, the customer, an automated phone menu, or a voicemail, so the transcript reads like a real conversation instead of "Speaker 1 / Speaker 2".'
       }
     ]
@@ -107,7 +107,7 @@ export const callscribeTabs: StudioTab[] = [
         id: 'review',
         label: 'Grade the call',
         icon: 'grading',
-        image: '/images/callscribe/quality.svg',
+        image: '/images/callscribe/quality.png',
         text: 'Checks the type of call, rates things like product knowledge and professionalism, and compares it against the company\'s own sales checklist, the same one used to train the sales team.'
       }
     ]
