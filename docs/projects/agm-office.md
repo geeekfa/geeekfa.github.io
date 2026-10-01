@@ -56,13 +56,26 @@ that backend through generic Query/Insert/Update endpoints.
   order can't be billed the same way as a normal one by accident.
 - Every status save also writes an audit log row (who, when, old/new value).
 
-## Safety rule Salman put in place himself (worth one line on the page)
+## Dropped from the page
 
-Salman wrote a hard rule into the project's own AI-assistant instructions: no AI tool is
-ever allowed to run INSERT/UPDATE/DELETE directly against the production SQL Server
-database, even if asked. The assistant can write the SQL and read-only SELECTs are fine,
-but any write statement has to be handed to Salman to run by hand. A self-imposed guardrail
-for a database that handles real client billing.
+Salman's `.claude/CLAUDE.md` for this project has a hard rule: no AI tool may ever run
+INSERT/UPDATE/DELETE directly against production, only write the SQL for him to run by
+hand. This was in an early draft of the page as a "feature" but Salman cut it on review —
+it's a rule he gave his own AI tooling, not something the software itself does, so it
+doesn't belong next to real product strengths. Keep this instinct for future pages too.
+
+## Corrections made on a second honesty pass
+
+- **Permissions**: first draft said denied pages are "just not shown" — wrong.
+  `middleware/routerGuard.js` shows the nav is NOT filtered by permission
+  (`components/general/FsNavbar.vue` only checks a static `hidden` flag); access is
+  actually gated per-route, redirecting to `/forbidden` via `permission/hasAccess`.
+  Corrected to describe the redirect/blocked-page behavior.
+- **Monday.com sync**: first draft said orders "get pulled in" from Monday.com — wrong
+  direction. `plugins/fsMonday.js` only looks up a Monday.com board item by project ID
+  and writes AGM's status to it (push, not pull). Corrected; kept the Bright
+  Stores/Portal Orders claim (verified via `sp_createProjectsBrightStores`,
+  `pages/project/po.vue`) since that one really does turn store orders into projects.
 
 ## What NOT to say
 

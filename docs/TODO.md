@@ -35,10 +35,15 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       keep it that way). 9 feature bullets covering project status history,
       the accounting lock (with the real bug Salman found and fixed), bulk
       order billing split, permissions, audit logging, clients/vendors/
-      credit cards, scheduling, order sync, and the self-imposed "no AI
-      writes to production DB" rule. Tags credit Salman for the Nuxt/Vue
-      frontend only, not the PHP backend (built by someone else). Hero is a
-      placeholder SVG. See `docs/projects/agm-office.md`.
+      credit cards, scheduling, Portal Orders, and Monday.com board sync.
+      Tags credit Salman for the Nuxt/Vue frontend only, not the PHP
+      backend (built by someone else). Hero is a placeholder SVG. Cut an
+      "AI can't write to prod DB" bullet on a second honesty pass — that's
+      a rule Salman gave his AI tooling, not a feature of the software.
+      Also corrected the permissions bullet (denial redirects to a blocked
+      page, not silent hiding) and the Monday.com bullet (pushes status out
+      to a board item, doesn't pull orders in). See
+      `docs/projects/agm-office.md`.
 
 ## Backlog
 
