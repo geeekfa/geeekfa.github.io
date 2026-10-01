@@ -5,9 +5,8 @@ const $q = useQuasar()
 const drawer = ref(false)
 
 const links = [
-  { label: 'Work', to: '/' },
-  { label: 'About', to: '/' },
-  { label: 'Resume', to: '/' }
+  { label: 'About', to: '/about' },
+  { label: 'Resume', href: '/resume.pdf' }
 ]
 </script>
 
@@ -18,7 +17,17 @@ const links = [
         <NuxtLink to="/" class="pf-hex pf-logo" aria-label="Salman Majidi, home">SM</NuxtLink>
         <q-space />
         <div class="gt-sm row items-center q-gutter-x-xs">
-          <q-btn v-for="l in links" :key="l.label" flat no-caps class="pf-btn" :label="l.label" :to="l.to" />
+          <q-btn
+            v-for="l in links"
+            :key="l.label"
+            flat
+            no-caps
+            class="pf-btn"
+            :label="l.label"
+            :to="l.to"
+            :href="l.href"
+            :target="l.href ? '_blank' : undefined"
+          />
         </div>
         <q-btn
           flat
@@ -35,7 +44,15 @@ const links = [
 
     <q-drawer v-model="drawer" side="right" overlay behavior="mobile" class="pf-glass">
       <q-list padding>
-        <q-item v-for="l in links" :key="l.label" clickable :to="l.to" @click="drawer = false">
+        <q-item
+          v-for="l in links"
+          :key="l.label"
+          clickable
+          :to="l.to"
+          :href="l.href"
+          :target="l.href ? '_blank' : undefined"
+          @click="drawer = false"
+        >
           <q-item-section>{{ l.label }}</q-item-section>
         </q-item>
       </q-list>

@@ -24,7 +24,15 @@ import { projects } from '~/data/projects'
             </p>
 
             <div class="row q-gutter-sm q-pt-sm">
-              <q-btn unelevated no-caps class="pf-btn pf-btn--solid" label="Resume" icon="description" />
+              <q-btn
+                unelevated
+                no-caps
+                class="pf-btn pf-btn--solid"
+                label="Resume"
+                icon="description"
+                href="/resume.pdf"
+                target="_blank"
+              />
             </div>
           </div>
 
