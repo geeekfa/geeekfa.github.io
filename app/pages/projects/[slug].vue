@@ -52,6 +52,18 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       storeLinks: m.storeLinks,
       finaleLine: m.finaleLine
     }
+  },
+  'bts-ai': async () => {
+    const m = await import('~/data/projects/bts-ai')
+    return {
+      kind: 'features',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      features: m.btsAiFeatures,
+      gallery: m.btsAiGallery,
+      storeLinks: m.storeLinks,
+      finaleLine: m.finaleLine
+    }
   }
 }
 
