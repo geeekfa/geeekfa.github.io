@@ -2,7 +2,7 @@
 import { projects } from '~/data/projects'
 import { skillByKey, skillColor } from '~/data/skills'
 import { tagHueOf } from '~/data/tags'
-import { tireStudioTabs, tireStudioPatterns } from '~/data/tire-studio'
+import { tireStudioTabs } from '~/data/tire-studio'
 import { techLinks } from '~/data/tech-links'
 
 const route = useRoute()
@@ -85,18 +85,6 @@ const whyPoints = [
     </section>
 
     <section class="pf-container q-py-xl">
-      <div class="text-h5 text-weight-bold q-mb-md">What this shows</div>
-      <q-list class="pf-highlight-list">
-        <q-item v-for="(p, i) in tireStudioPatterns" :key="i" class="q-px-none">
-          <q-item-section avatar top>
-            <q-icon name="check_circle" color="positive" size="18px" />
-          </q-item-section>
-          <q-item-section class="pf-reading">{{ p }}</q-item-section>
-        </q-item>
-      </q-list>
-    </section>
-
-    <section class="pf-container q-pb-xl">
       <div class="text-h5 text-weight-bold q-mb-md">Tech stack</div>
       <div class="pf-tags">
         <q-chip
@@ -109,6 +97,26 @@ const whyPoints = [
           :label="t"
           :icon-right="techLinks[t] ? 'open_in_new' : undefined"
           @click="techLinks[t] && navigateTo(techLinks[t], { external: true, open: { target: '_blank' } })"
+        />
+      </div>
+    </section>
+
+    <section class="pf-container q-pb-xl">
+      <div class="pf-finale">
+        <div class="pf-finale__dots" aria-hidden="true">
+          <span v-for="t in tireStudioTabs" :key="t.id" class="pf-finale__dot" :style="{ '--c': t.accent }" />
+        </div>
+        <p class="pf-finale__quote">
+          Two photos in.<br />
+          A full, studio-quality catalog out — automatically, for every size.
+        </p>
+        <q-btn
+          unelevated
+          no-caps
+          class="pf-btn pf-btn--solid"
+          label="Back to all projects"
+          icon-right="arrow_forward"
+          to="/#projects"
         />
       </div>
     </section>
@@ -231,11 +239,37 @@ const whyPoints = [
   }
 }
 
-.pf-highlight-list {
-  .q-item {
-    min-height: unset;
-    padding-top: 6px;
-    padding-bottom: 6px;
+/* why-no-Quasar: a quiet, centered closing moment — a decorative row of the
+   same 5 stage colours used throughout the page, then one pull-quote line */
+.pf-finale {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px 8px;
+
+  &__dots {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--c);
+  }
+
+  &__quote {
+    font-family: var(--pf-display);
+    font-weight: 600;
+    font-size: clamp(22px, 3.4vw, 34px);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    max-width: 22ch;
+    margin: 0 0 32px;
+    color: var(--pf-text);
   }
 }
 </style>

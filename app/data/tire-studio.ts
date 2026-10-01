@@ -200,11 +200,3 @@ export const tireStudioTabs: StudioTab[] = [
     ]
   }
 ]
-
-export const tireStudioPatterns = [
-  'Cost-consciousness is architectural — clustering exists specifically to make the most expensive step run far less often.',
-  'Every non-trivial numeric decision is backed by a real measurement on real production data.',
-  'Subtle bugs get traced to their root cause and fixed structurally — not patched at the symptom.',
-  'Once a mistake can propagate across a whole batch of output, the system refuses and says why, rather than guessing.',
-  'Multi-purpose AI instructions get split into single-purpose passes once a combined one confuses the model.'
-]
