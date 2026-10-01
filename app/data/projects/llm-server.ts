@@ -31,7 +31,7 @@ export const llmServerFeatures: Feature[] = [
     id: 'own-model',
     icon: 'memory',
     title: 'Runs its own AI model, no outside company involved',
-    text: 'I downloaded an open-source language model and got it running entirely on one server. No calls out to ChatGPT, Gemini, or anyone else.'
+    text: 'I downloaded open-source language models like Qwen, Gemma, and DeepSeek and got them running entirely on one server. No calls out to ChatGPT, Gemini, or anyone else.'
   },
   {
     id: 'same-api',
