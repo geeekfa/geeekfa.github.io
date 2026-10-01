@@ -48,8 +48,8 @@ export const agmOfficeFeatures: Feature[] = [
   {
     id: 'permissions',
     icon: 'admin_panel_settings',
-    title: 'Every page and every action has a permission behind it',
-    text: 'Nothing is visible by accident. Each page is tied to a permission, and if someone doesn\'t have access to it, the system just doesn\'t show it to them rather than letting them in and hoping they don\'t touch anything.'
+    title: 'Every page checks who you are before it opens',
+    text: 'Each page is tied to a permission for that employee, and even view, add, edit and delete are controlled separately. Try to open a page you don\'t have access to and you get sent straight to a blocked screen instead of getting in.'
   },
   {
     id: 'audit-log',
@@ -72,14 +72,14 @@ export const agmOfficeFeatures: Feature[] = [
   {
     id: 'order-sync',
     icon: 'sync',
-    title: 'Orders come in automatically, not by hand',
-    text: 'Orders placed through the company\'s online stores and through Monday.com get pulled in and turned into real projects automatically, instead of someone retyping every order by hand.'
+    title: 'Online store orders become projects with one click',
+    text: 'Orders placed through the company\'s online stores get pulled into one screen, and turning a batch of them into real projects is one action instead of retyping every order by hand.'
   },
   {
-    id: 'safety-rule',
-    icon: 'security',
-    title: 'A rule I wrote for myself, not just the code',
-    text: 'This database holds real client billing data, so I set a hard rule for any AI coding assistant working on this project: it can write SQL, but it is never allowed to run a change directly against production. Any update has to be handed to me so I run it myself.'
+    id: 'monday-sync',
+    icon: 'dashboard',
+    title: 'Keeps a Monday.com board in sync',
+    text: 'The company also tracks some of this work on a Monday.com board. AGM Office pushes project updates out to the matching item on that board automatically, so people watching it there see current status too.'
   }
 ]
 
