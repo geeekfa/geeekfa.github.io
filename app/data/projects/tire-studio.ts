@@ -20,19 +20,19 @@ export const whyPoints = [
     icon: 'visibility_off',
     color: 'var(--pf-infra)',
     title: 'The problem',
-    text: 'Most tire shops and wholesalers have no good photos of what they sell — some have none at all. A shopper online has no real idea what the tire looks like before buying it.'
+    text: 'Most tire shops and wholesalers don\'t have good photos of what they sell. Some don\'t have any at all. So a shopper online has no real idea what the tire even looks like before they buy it.'
   },
   {
     icon: 'schedule',
     color: 'var(--pf-mobile)',
     title: 'The honest fix costs too much',
-    text: 'Photographing every size in a real studio, done right, takes months and a serious budget — a line can have dozens of sizes, and catalog-grade photos need real studio work, not a snapshot.'
+    text: 'Doing it right in a real studio takes months and a lot of money. A single tire line can have dozens of sizes, and catalog-quality photos need real studio work, not just a quick snapshot.'
   },
   {
     icon: 'bolt',
     color: 'var(--pf-ai)',
     title: 'What I built instead',
-    text: 'Feed it just two reference photos of one tire model — front and sidewall — and it generates studio-quality catalog images for every size in that line automatically. Months of studio work, down to hours.'
+    text: 'You feed it two photos of one tire, the front and the sidewall, and it automatically makes studio-quality catalog images for every size in that line. What used to take months now takes hours.'
   }
 ]
 
@@ -40,7 +40,7 @@ export const finaleLine = ['Give it two photos.', 'Get back an entire catalog.']
 
 export const heroImage = '/images/tire-studio/hero.png'
 
-export const introLine = 'Two reference photos in, a full catalog out — five stages, each doing one job.'
+export const introLine = 'Two photos go in, a full catalog comes out. Five stages, each one doing its own job.'
 
 export const tireStudioTabs: StudioTab[] = [
   {
@@ -55,7 +55,7 @@ export const tireStudioTabs: StudioTab[] = [
         label: 'Cluster sizes',
         icon: 'table_chart',
         image: '/images/tire-studio/prepare-cluster.png',
-        text: 'Groups look-alike sizes so only the truly different ones get rendered — cutting the work almost in half.'
+        text: 'Groups sizes that look alike, so only the ones that are actually different get rendered. That cuts the work almost in half.'
       }
     ]
   },
@@ -171,7 +171,7 @@ export const tireStudioTabs: StudioTab[] = [
         label: 'Label Pack',
         icon: 'title',
         image: '/images/tire-studio/side-label-pack.png',
-        text: 'Adds each size\'s own text, perfectly placed — for every size, automatically.'
+        text: 'Adds each size\'s own text in exactly the right spot, automatically, for every size.'
       }
     ]
   },
@@ -180,7 +180,7 @@ export const tireStudioTabs: StudioTab[] = [
     label: '45°',
     icon: 'crop_rotate',
     accent: 'var(--pf-mobile)',
-    summary: 'Generates the angled catalog shot and labels it — the hardest view to get right.',
+    summary: 'Generates the angled catalog shot and labels it. This is the hardest view to get right.',
     steps: [
       {
         id: 'size-pack',
