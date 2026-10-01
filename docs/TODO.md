@@ -62,6 +62,16 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       text-only steps (no step images at all). Icons picked by hand since
       the app itself has no step-level icons to pull from. See
       `docs/projects/fs-phone-screen.md`.
+- [x] FS Tire Inventory project detail page — pipeline shape, 5 stages
+      (panorama stitching, counting with dual-witness confirmation, crop +
+      label locating, label reading with two cross-checking OCR engines,
+      grouping into the final report), confirmed with Salman first. No app
+      UI exists for this project (backend-only prototype, Flutter capture
+      app explicitly out of scope), so the "screenshots" are real panorama
+      images from the project's own test videos instead of app screens, per
+      Salman's choice. Icons picked by hand since there's no frontend to
+      pull step icons from. Hero is a placeholder SVG. See
+      `docs/projects/fs-tire-inventory.md`.
 
 ## Backlog
 

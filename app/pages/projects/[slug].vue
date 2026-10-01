@@ -98,6 +98,17 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       tabs: m.fsPhoneScreenTabs,
       finaleLine: m.finaleLine
     }
+  },
+  'fs-tire-inventory': async () => {
+    const m = await import('~/data/projects/fs-tire-inventory')
+    return {
+      kind: 'pipeline',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      introLine: m.introLine,
+      tabs: m.fsTireInventoryTabs,
+      finaleLine: m.finaleLine
+    }
   }
 }
 
