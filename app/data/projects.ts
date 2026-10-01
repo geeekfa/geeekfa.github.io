@@ -57,7 +57,23 @@ export const projects: Project[] = [
     summary:
       'Chat-based analytics for managers. They ask plain-English questions about field-visit data instead of digging through spreadsheets, and search company policies the same way.',
     skill: 'ai',
-    tags: ['Python', 'FastAPI', 'OpenAI', 'LLM agents', 'RAG', 'pgvector', 'PostgreSQL', 'Celery', 'Redis', 'Nuxt.js']
+    tags: [
+      'Python',
+      'FastAPI',
+      'OpenAI',
+      'LLM agents',
+      'RAG',
+      'pgvector',
+      'PostgreSQL',
+      'SQL Server',
+      'Celery',
+      'Redis',
+      'JWT',
+      'Nuxt.js',
+      'Quasar',
+      'ApexCharts',
+      'Mermaid.js'
+    ]
   },
   {
     slug: 'agm-office',

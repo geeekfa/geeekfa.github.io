@@ -12,5 +12,7 @@ export const techLinks: Record<string, string> = {
   Redis: 'https://redis.io',
   Celery: 'https://docs.celeryq.dev',
   MySQL: 'https://www.mysql.com',
-  OpenAI: 'https://openai.com'
+  OpenAI: 'https://openai.com',
+  ApexCharts: 'https://apexcharts.com',
+  'Mermaid.js': 'https://mermaid.js.org'
 }
