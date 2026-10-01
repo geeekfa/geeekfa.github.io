@@ -122,4 +122,4 @@ export const storeLinks = [
 
 export const finaleLine = ['One app for every team.', 'Real data instead of paperwork.']
 
-export const heroImage = '/images/bts-notes/hero.svg'
+export const heroImage = '/images/bts-notes/hero.png'
