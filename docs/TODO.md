@@ -3,15 +3,20 @@
 Running notes and loose ideas, not yet built. Not part of the deployed site
 (only `.output/public` gets published to GitHub Pages).
 
-## In progress
+## Done
 
-- [ ] Project detail page ("More info" target) — layout draft in review with Salman
+- [x] Tire Studio project detail page — hero diagram, why-it-exists, all 5
+      pipeline stages with real screenshots, tech stack, closing line.
 
 ## Backlog
 
-- [ ] Write real content for each project page (after page structure is approved)
-- [ ] Collect real screenshots / before-after images from Salman for each project
-- [ ] Finalize theme/colors (currently one dark-theme draft, not locked in)
+- [ ] Pick the next project for a detail page (BTS Notes is the next most
+      demo-worthy per the CLAUDE.md ranking)
+- [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
+      currently point at "/")
+- [ ] Wire up the "About" nav link, or decide the site doesn't need one
+- [ ] Finalize theme/colors (currently the dark draft from the homepage,
+      not explicitly signed off as final)
 - [ ] Decide: buy a custom domain later? (currently no)
 
 ## Ideas / raised by Salman, not yet scoped
