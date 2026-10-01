@@ -77,7 +77,11 @@ export interface GalleryImage {
 // generator in nuxt.config.ts). Add a caption here once a screenshot has actually been reviewed
 // for any visible customer data (internal tool, real company data, needs a privacy check first).
 const galleryCaptions: Record<string, string> = {
-  '1': 'Document Central answering a pricing question, with the tier table and the source PDF attached.'
+  '1': 'Document Central answering a pricing question, with the tier table and the source PDF attached.',
+  '2': 'A warranty claim procedure, turned into a flowchart instead of a block of steps.',
+  '3': 'Visit Notes Analyst answering "which customers complained about pricing last week?"',
+  '4': "A manager's view of note volume by sales rep, on the TSM dashboard.",
+  '5': 'How often customers get a visit, from the TSM dashboard.'
 }
 
 const galleryFiles = galleryManifest as string[]
