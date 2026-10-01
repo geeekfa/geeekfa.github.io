@@ -107,8 +107,8 @@ const whyPoints = [
           <span v-for="t in tireStudioTabs" :key="t.id" class="pf-finale__dot" :style="{ '--c': t.accent }" />
         </div>
         <p class="pf-finale__quote">
-          Two photos in.<br />
-          A full, studio-quality catalog out — automatically, for every size.
+          Give it two photos.<br />
+          Get back an entire catalog.
         </p>
         <q-btn
           unelevated
