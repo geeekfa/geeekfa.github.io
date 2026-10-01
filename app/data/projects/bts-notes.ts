@@ -5,7 +5,7 @@ export const whyPoints = [
     icon: 'help_outline',
     color: 'var(--pf-infra)',
     title: 'The problem',
-    text: 'Every team at the company had their own way of tracking their work. Sales, HR, regional managers, warranty, you name it. Mostly paper forms, texts, or just memory. Nobody could search it, compare it, or even trust it was true.'
+    text: 'Every team at the company had their own way of tracking their work. Sales, HR, regional managers, you name it. Mostly paper forms, texts, or just memory. Nobody could search it, compare it, or even trust it was true.'
   },
   {
     icon: 'schedule',
@@ -33,7 +33,7 @@ export const btsNotesFeatures: Feature[] = [
     id: 'data-driven',
     icon: 'dynamic_form',
     title: 'One app, every department',
-    text: 'Sales, HR, regional managers, warranty, you name it. Each team gets its own questions and flow, powered by the same app. No new release needed to change what\'s asked.'
+    text: 'Sales, HR, regional managers, you name it. Each team gets its own questions and flow, powered by the same app. No new release needed to change what\'s asked.'
   },
   {
     id: 'answer-types',
@@ -63,7 +63,7 @@ export const btsNotesFeatures: Feature[] = [
     id: 'offline-sync',
     icon: 'cloud_sync',
     title: 'Works with zero signal',
-    text: 'No internet, no problem. Everything saves on the phone and quietly syncs the moment you\'re back online.'
+    text: 'No internet, no problem. Everything saves on the phone first, a badge shows what\'s still waiting, and one tap sends it all once you\'re back online.'
   },
   {
     id: 'etrack',

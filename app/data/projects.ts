@@ -34,7 +34,7 @@ export const projects: Project[] = [
     slug: 'bts-notes',
     name: 'BTS Notes',
     summary:
-      'One Flutter app every department uses to record their work: sales, HR, warranty, and more. Each team gets its own questions, built from a database instead of hardcoded screens.',
+      'One Flutter app every department uses to record their work: sales, HR, regional managers, and more. Each team gets its own questions, built from a database instead of hardcoded screens.',
     skill: 'mobile',
     tags: ['Flutter', 'Dart', 'iOS', 'Android', 'sqflite', 'Offline sync', 'Barcode scanning']
   },
