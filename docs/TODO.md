@@ -10,13 +10,10 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
 
 ## Backlog
 
-- [ ] Pick the next project for a detail page (BTS Notes is the next most
-      demo-worthy per the CLAUDE.md ranking)
+- [ ] BTS Notes project detail page (next up, via the `/project-page` skill)
 - [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
       currently point at "/")
 - [ ] Wire up the "About" nav link, or decide the site doesn't need one
-- [ ] Finalize theme/colors (currently the dark draft from the homepage,
-      not explicitly signed off as final)
 - [ ] Decide: buy a custom domain later? (currently no)
 
 ## Ideas / raised by Salman, not yet scoped
