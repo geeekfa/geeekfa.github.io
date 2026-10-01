@@ -2,7 +2,7 @@ export interface StudioStep {
   id: string
   label: string
   icon: string
-  image: string
+  image?: string
   text: string
 }
 
@@ -189,14 +189,12 @@ export const tireStudioTabs: StudioTab[] = [
         id: 'watermark',
         label: 'Watermark',
         icon: 'water_drop',
-        image: '/images/tire-studio/publish-watermark.png',
         text: 'Protects the images before they go out.'
       },
       {
         id: 'export',
         label: 'Export',
         icon: 'file_download',
-        image: '/images/tire-studio/publish-export.png',
         text: 'Delivers the final files in the sizes needed.'
       }
     ]

@@ -12,10 +12,19 @@ watch(
 )
 
 const current = computed(() => props.steps.find((s) => s.id === slide.value))
+const hasImages = computed(() => props.steps.some((s) => s.image))
 </script>
 
 <template>
-  <div class="pf-carousel" :style="{ '--c': accent }">
+  <div v-if="!hasImages" class="pf-carousel pf-carousel--no-image" :style="{ '--c': accent }">
+    <div v-for="s in steps" :key="s.id" class="pf-carousel__row">
+      <q-icon :name="s.icon" size="22px" class="pf-carousel__icon" />
+      <span class="pf-carousel__step-label">{{ s.label }}</span>
+      <span class="pf-carousel__text">{{ s.text }}</span>
+    </div>
+  </div>
+
+  <div v-else class="pf-carousel" :style="{ '--c': accent }">
     <q-carousel
       v-model="slide"
       animated
@@ -58,6 +67,20 @@ const current = computed(() => props.steps.find((s) => s.id === slide.value))
 
 <style scoped lang="scss">
 .pf-carousel {
+  &--no-image {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 4px;
+  }
+
   &__frame {
     background: var(--pf-surface-2);
   }
