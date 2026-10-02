@@ -54,8 +54,8 @@ Other completed projects (Blackstirebot, FS Phone Screen, Atlantic Gems, Fard Sy
 - Salman gets overwhelmed easily — go one step at a time, confirm before big structural decisions (e.g. before deciding final visual design, before writing final project copy).
 - Don't fabricate project details — always check the resume project's research docs (or ask Salman) rather than inventing claims.
 
-## Not decided yet — ask Salman before proceeding
-- Visual design/theme (colors, layout style, dark/light mode).
-- Which projects make the first version of the site, and in what order.
-- Whether to write project-page copy directly here or draft it first in the resume project's docs.
-- Whether a custom domain will be purchased later.
+## Decided (resolved, was previously open)
+- Visual design/theme: settled, dark/light toggle built, token-based colors per skill.
+- All 9 projects from `projects.ts` have live detail pages (see `docs/TODO.md` for the full build log).
+- Project-page copy is written directly in this repo's `app/data/projects/*.ts`, not drafted in the resume project first.
+- No custom domain. Salman decided GitHub Pages at `geeekfa.github.io` is professional enough on its own — don't raise this again.
