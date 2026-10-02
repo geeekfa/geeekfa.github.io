@@ -54,8 +54,8 @@ export const telegramBotFeatures: Feature[] = [
 ]
 
 export const finaleLine = [
-  'Checking stock used to mean a phone call.',
-  'Now it is just a message in a chat you already have open.'
+  "You don't have to call anymore.",
+  'Just type the size in chat.'
 ]
 
 export const heroImage = '/images/telegram-bot/hero.svg'
