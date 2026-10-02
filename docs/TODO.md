@@ -96,16 +96,16 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       with him and kept the existing accurate tags. Checkout/order
       submission is a stub in the real code — closing line avoids implying
       it's complete, matches the handover doc's framing that the client
-      paused this before that step, not that it was abandoned. Hero is a
-      placeholder SVG. See `docs/projects/telegram-bot.md`.
+      paused this before that step, not that it was abandoned. Real hero
+      image swapped in afterward (phone chat → warehouse shelf, Telegram
+      icon). See `docs/projects/telegram-bot.md`.
+- [x] BTS AI: real hero image and 5 real gallery screenshots in place
+      (`public/images/bts-ai/hero.png`, `1.png`–`5.png`).
 
 ## Backlog
 
-- [ ] BTS AI: real hero image (ask Salman: build it himself or get an AI
-      image prompt, same "INPUT → OUTPUT" dark-background style as the other
-      two heroes, using `--pf-ai` accent).
-- [ ] BTS AI: real screenshots for the gallery once Salman has some that are
-      safe to publish (no real customer names/notes visible).
+(none open — custom domain was the only other item and Salman decided
+against it, GitHub Pages is professional enough as-is)
 
 - [ ] Decide: buy a custom domain later? (currently no)
 
