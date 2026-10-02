@@ -58,4 +58,4 @@ export const finaleLine = [
   'Just type the size in chat.'
 ]
 
-export const heroImage = '/images/telegram-bot/hero.svg'
+export const heroImage = '/images/telegram-bot/hero.png'
