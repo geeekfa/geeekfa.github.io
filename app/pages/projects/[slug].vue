@@ -121,6 +121,18 @@ const contentRegistry: Record<string, () => Promise<ProjectContent>> = {
       storeLinks: [],
       finaleLine: m.finaleLine
     }
+  },
+  'telegram-bot': async () => {
+    const m = await import('~/data/projects/telegram-bot')
+    return {
+      kind: 'features',
+      heroImage: m.heroImage,
+      whyPoints: m.whyPoints,
+      features: m.telegramBotFeatures,
+      gallery: [],
+      storeLinks: [],
+      finaleLine: m.finaleLine
+    }
   }
 }
 

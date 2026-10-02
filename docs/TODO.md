@@ -81,6 +81,19 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       copy, per Salman's explicit request. The project's own docs mentioned
       a "Hermes Agent" client that talks to this server; left out entirely,
       also per Salman's request.
+- [x] B2B Ordering Bot project detail page — features shape, no gallery (no
+      screenshots exist for a Telegram bot) and no store links (private,
+      approval-gated, not something to send a recruiter to download). 4
+      feature bullets: registration with admin approval, inline tire
+      search from any chat, add-to-cart with live qty on the button, cart
+      with a running total. Salman originally described it as talking to a
+      FastAPI backend; the real code (`pyTelegramBotAPI` + direct `pyodbc`
+      calls to SQL Server stored procedures) doesn't match that, confirmed
+      with him and kept the existing accurate tags. Checkout/order
+      submission is a stub in the real code — closing line avoids implying
+      it's complete, matches the handover doc's framing that the client
+      paused this before that step, not that it was abandoned. Hero is a
+      placeholder SVG. See `docs/projects/telegram-bot.md`.
 
 ## Backlog
 
