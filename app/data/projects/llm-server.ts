@@ -70,4 +70,4 @@ export const finaleLine = [
   'If I can stand this one up, I can stand up any of them.'
 ]
 
-export const heroImage = '/images/llm-server/hero.svg'
+export const heroImage = '/images/llm-server/hero.png'
