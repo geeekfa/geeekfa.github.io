@@ -23,7 +23,7 @@ export const whyPoints = [
 
 export const finaleLine = ['Point your phone at the shelf.', 'Get a count you can trust.']
 
-export const heroImage = '/images/fs-tire-inventory/hero.svg'
+export const heroImage = '/images/fs-tire-inventory/hero.png'
 
 export const introLine =
   'A video of a shelf goes in, and a tire count with labels comes out. Five stages, and every one of them is allowed to say "not sure" instead of guessing.'
