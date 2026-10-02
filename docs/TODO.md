@@ -81,6 +81,10 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
       copy, per Salman's explicit request. The project's own docs mentioned
       a "Hermes Agent" client that talks to this server; left out entirely,
       also per Salman's request.
+- [x] Wired up the real Resume link (nav + homepage hero button now point at
+      `/Resume.pdf`, file is in `public/`) and built out an "About" page,
+      wired into the nav. Both were stale backlog items pointing at "/"
+      before this.
 - [x] B2B Ordering Bot project detail page — features shape, no gallery (no
       screenshots exist for a Telegram bot) and no store links (private,
       approval-gated, not something to send a recruiter to download). 4
@@ -103,9 +107,6 @@ Running notes and loose ideas, not yet built. Not part of the deployed site
 - [ ] BTS AI: real screenshots for the gallery once Salman has some that are
       safe to publish (no real customer names/notes visible).
 
-- [ ] Wire up a real Resume link (nav "Resume" + homepage hero button both
-      currently point at "/")
-- [ ] Wire up the "About" nav link, or decide the site doesn't need one
 - [ ] Decide: buy a custom domain later? (currently no)
 
 ## Ideas / raised by Salman, not yet scoped
