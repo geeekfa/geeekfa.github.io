@@ -121,6 +121,6 @@ export const projects: Project[] = [
     summary:
       'Telegram bot that lets approved business customers search tire stock and add items to a cart right from any chat, using inline mode.',
     skill: 'backend',
-    tags: ['Python', 'Telegram Bot API', 'SQL Server', 'Stored procedures']
+    tags: ['Python', 'Telegram Bot API']
   }
 ]
