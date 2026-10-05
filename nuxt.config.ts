@@ -71,6 +71,7 @@ export default defineNuxtConfig({
 
   css: [
     '@quasar/extras/material-icons/material-icons.css',
+    '@quasar/extras/fontawesome-v7/fontawesome-v7.css',
     'quasar/src/css/index.sass',
     '~/assets/css/theme.scss'
   ],

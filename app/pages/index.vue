@@ -33,6 +33,24 @@ import { projects } from '~/data/projects'
                 href="/Resume.pdf"
                 target="_blank"
               />
+              <q-btn
+                flat
+                round
+                class="pf-btn"
+                icon="fa-brands fa-github"
+                href="https://github.com/geeekfa"
+                target="_blank"
+                aria-label="GitHub"
+              />
+              <q-btn
+                flat
+                round
+                class="pf-btn"
+                icon="fa-brands fa-linkedin"
+                href="https://www.linkedin.com/in/salman-majidi/"
+                target="_blank"
+                aria-label="LinkedIn"
+              />
             </div>
           </div>
 

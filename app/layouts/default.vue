@@ -28,6 +28,26 @@ const links = [
             :href="l.href"
             :target="l.href ? '_blank' : undefined"
           />
+          <q-btn
+            flat
+            round
+            dense
+            class="pf-btn"
+            icon="fa-brands fa-github"
+            href="https://github.com/geeekfa"
+            target="_blank"
+            aria-label="GitHub"
+          />
+          <q-btn
+            flat
+            round
+            dense
+            class="pf-btn"
+            icon="fa-brands fa-linkedin"
+            href="https://www.linkedin.com/in/salman-majidi/"
+            target="_blank"
+            aria-label="LinkedIn"
+          />
         </div>
         <q-btn
           flat
@@ -54,6 +74,14 @@ const links = [
           @click="drawer = false"
         >
           <q-item-section>{{ l.label }}</q-item-section>
+        </q-item>
+        <q-item clickable href="https://github.com/geeekfa" target="_blank" @click="drawer = false">
+          <q-item-section avatar><q-icon name="fa-brands fa-github" /></q-item-section>
+          <q-item-section>GitHub</q-item-section>
+        </q-item>
+        <q-item clickable href="https://www.linkedin.com/in/salman-majidi/" target="_blank" @click="drawer = false">
+          <q-item-section avatar><q-icon name="fa-brands fa-linkedin" /></q-item-section>
+          <q-item-section>LinkedIn</q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
