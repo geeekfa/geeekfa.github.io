@@ -19,7 +19,7 @@ import { projects } from '~/data/projects'
             </div>
 
             <p class="pf-hero__lede q-mb-none">
-              10+ years building software that business teams use every day. Backend, web, mobile, and the AI inside
+              15+ years building software that business teams use every day. Backend, web, mobile, and the AI inside
               them.
             </p>
 
