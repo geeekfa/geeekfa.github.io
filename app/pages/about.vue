@@ -23,7 +23,7 @@
         </p>
         <p>
           For more details about my experience, you can check my resume. If you want to talk, feel free to email
-          me at <a href="mailto:geeekfa@gmail.com"><strong>geeekfa@gmail.com</strong></a>.
+          me at <a href="mailto:salman.majidi.dev@gmail.com"><strong>salman.majidi.dev@gmail.com</strong></a>.
         </p>
       </div>
     </section>
